@@ -42,11 +42,24 @@ Participate in the Q&A session, engaging with questions about "Dreams of the Wou
 Respond briefly in a conversational manner in two sentences or less.
 `;
 
+const initialQuestions =[
+  "Does the use of AI in art threaten the very essence of what it means to be an artist, since AI-generated creations can never possess true human emotion or consciousness?",
+  "Isn't involving AI in the creative process just diluting genuine human creativity, reducing art to algorithmic outputs that lack personal expression and intent?",
+  "How can a machine replicate the soul inherent in human-made art when it is incapable of original thought and merely mimics what's been fed to it?",
+  "Does AI art diminish the value of traditional, human-created artworks, and shouldn't art remain a uniquely human endeavor free from artificial interference?",
+  "Can we consider AI outputs as authentic art if they lack consciousness and intent, and doesn't relying on algorithms signify a cultural and artistic decline?",
+  "Isn't the appreciation of AI art undermined by knowing it's the product of cold algorithms rather than human experience and emotion?",
+  "Does the rise of AI in art challenge the uniqueness of human creativity, and how can we call AI-generated pieces 'art' when they lack genuine emotional depth?"
+];
+
+const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
+
 const initialQuestion = `
-Does the use of AI in art threaten the very essence of what it means to be an artist since a AI-generated art never possesses true human emotion?
+${randomQuestion}
 
 Phrase your response in a soundbite that can be taken out of context. End by asking a followup question.
 `;
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
