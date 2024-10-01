@@ -498,7 +498,7 @@
       document.getElementById('typing-indicator').style.display = 'flex';
 
       try {
-        const response = await fetch('/api/chatgpt', {
+        const response = await fetch('/api/chatgpt.mjs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: userInput })
