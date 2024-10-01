@@ -122,6 +122,30 @@
       text-align: center;
       margin-bottom: 30px;
       text-shadow: 0 0 10px var(--neon-blue-1);
+      position: relative;
+      display: inline-block;
+    }
+
+    .album-title::before,
+    .album-title::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .album-title::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--vivid-pink-1);
+      animation: glitch-1 3s infinite linear alternate-reverse;
+    }
+
+    .album-title::after {
+      left: -2px;
+      text-shadow: 2px 0 var(--electric-purple-1);
+      animation: glitch-2 4s infinite linear alternate-reverse;
     }
 
     /* Album Cover */
@@ -154,41 +178,24 @@
       display: inline-block;
     }
 
-    .audio-player-label::before,
-    .audio-player-label::after {
+    .audio-player-label::before {
       content: attr(data-text);
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
+      left: 1px;
+      text-shadow: -1px 0 var(--neon-blue-1);
+      animation: subtle-glitch 2s infinite linear alternate-reverse;
     }
 
-    .audio-player-label::before {
-      left: 2px;
-      text-shadow: -2px 0 var(--neon-blue-1);
-      animation: glitch-1 2s infinite linear alternate-reverse;
-    }
-
-    .audio-player-label::after {
-      left: -2px;
-      text-shadow: 2px 0 var(--vivid-pink-1);
-      animation: glitch-2 3s infinite linear alternate-reverse;
-    }
-
-    @keyframes glitch-1 {
-      0%, 100% { clip-path: inset(50% 0 30% 0); }
-      20% { clip-path: inset(20% 0 60% 0); }
-      40% { clip-path: inset(70% 0 10% 0); }
-      60% { clip-path: inset(10% 0 80% 0); }
-      80% { clip-path: inset(40% 0 40% 0); }
-    }
-
-    @keyframes glitch-2 {
-      0%, 100% { clip-path: inset(30% 0 50% 0); }
-      25% { clip-path: inset(60% 0 20% 0); }
-      50% { clip-path: inset(10% 0 70% 0); }
-      75% { clip-path: inset(80% 0 10% 0); }
+    @keyframes subtle-glitch {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      20% { clip-path: inset(20% 0 0 0); }
+      40% { clip-path: inset(0 20% 0 0); }
+      60% { clip-path: inset(0 0 20% 0); }
+      80% { clip-path: inset(0 0 0 20%); }
     }
 
     .audio-player audio {
@@ -225,34 +232,28 @@
       width: 100%;
       height: 100%;
       background: black;
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
     .chat-header::before {
       left: 2px;
       text-shadow: -2px 0 var(--electric-purple-1);
-      animation: glitch-1 2.5s infinite linear alternate-reverse;
+      animation: chat-glitch-1 2.5s infinite linear alternate-reverse;
     }
 
     .chat-header::after {
       left: -2px;
       text-shadow: 2px 0 var(--vivid-pink-3);
-      animation: glitch-2 3.5s infinite linear alternate-reverse;
+      animation: chat-glitch-2 3.5s infinite linear alternate-reverse;
     }
 
-    @keyframes glitch-1 {
-      0%, 100% { clip-path: inset(50% 0 30% 0); }
-      20% { clip-path: inset(20% 0 60% 0); }
-      40% { clip-path: inset(70% 0 10% 0); }
-      60% { clip-path: inset(10% 0 80% 0); }
-      80% { clip-path: inset(40% 0 40% 0); }
+    @keyframes chat-glitch-1 {
+      0%, 100% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
+      50% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); }
     }
 
-    @keyframes glitch-2 {
-      0%, 100% { clip-path: inset(30% 0 50% 0); }
-      25% { clip-path: inset(60% 0 20% 0); }
-      50% { clip-path: inset(10% 0 70% 0); }
-      75% { clip-path: inset(80% 0 10% 0); }
+    @keyframes chat-glitch-2 {
+      0%, 100% { clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%); }
+      50% { clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%); }
     }
 
     .chat-header:hover::before,
@@ -441,35 +442,69 @@
     }
 
     .dream-header::before {
-      left: 2px;
-      text-shadow: -2px 0 var(--vivid-pink-1);
-      animation: glitch-1 2s infinite linear alternate-reverse;
+      left: 3px;
+      text-shadow: -3px 0 var(--vivid-pink-1);
+      animation: dream-glitch-1 2.5s infinite linear alternate-reverse;
     }
 
     .dream-header::after {
-      left: -2px;
-      text-shadow: 2px 0 var(--electric-purple-1);
-      animation: glitch-2 3s infinite linear alternate-reverse;
+      left: -3px;
+      text-shadow: 3px 0 var(--electric-purple-1);
+      animation: dream-glitch-2 3.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes dream-glitch-1 {
+      0%, 100% { clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); }
+      50% { clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); }
+    }
+
+    @keyframes dream-glitch-2 {
+      0%, 100% { clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); }
+      50% { clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%); }
     }
 
     .dream-subheader {
       font-size: 1.5rem;
       color: var(--bright-cyan-1);
       margin-bottom: 30px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .dream-subheader::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      left: 1px;
+      text-shadow: -1px 0 var(--neon-green-1);
+      animation: subheader-glitch 3s infinite linear alternate-reverse;
+    }
+
+    @keyframes subheader-glitch {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      25% { clip-path: inset(0 25% 0 0); }
+      50% { clip-path: inset(25% 0 25% 0); }
+      75% { clip-path: inset(0 0 0 25%); }
     }
 
     .dream-content {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
       margin-bottom: 30px;
     }
 
     .dream-see, .dream-hear {
-      width: 48%;
+      width: 100%;
+      margin-bottom: 20px;
     }
 
     .dream-image {
       width: 100%;
+      max-width: 600px;
       height: auto;
       border: 2px solid var(--neon-green-1);
       border-radius: 10px;
@@ -477,6 +512,7 @@
 
     .dream-audio {
       width: 100%;
+      max-width: 600px;
     }
 
     /* Prompt Section */
@@ -491,6 +527,28 @@
       font-size: 2rem;
       color: var(--neon-blue-1);
       margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .prompt-header::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      left: 2px;
+      text-shadow: -2px 0 var(--vivid-pink-2);
+      animation: prompt-glitch 4s infinite linear alternate-reverse;
+    }
+
+    @keyframes prompt-glitch {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      20% { clip-path: inset(20% 0 20% 0); }
+      40% { clip-path: inset(0 20% 0 20%); }
+      60% { clip-path: inset(10% 10% 10% 10%); }
+      80% { clip-path: inset(5% 15% 15% 5%); }
     }
 
     .prompt-content {
@@ -540,13 +598,8 @@
         font-size: 1.2rem;
       }
 
-      .dream-content {
-        flex-direction: column;
-      }
-
-      .dream-see, .dream-hear {
-        width: 100%;
-        margin-bottom: 20px;
+      .dream-image, .dream-audio {
+        max-width: 100%;
       }
 
       .prompt-header {
