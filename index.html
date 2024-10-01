@@ -506,13 +506,14 @@
     ];
 
     let conversationStarted = false;
+    let currentPredefinedQuestion = '';
 
     // Function to initiate conversation with a random question
     function initiateConversation() {
       if (conversationStarted) return;
       conversationStarted = true;
-      const randomQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
-      appendMessage('Eno Bot', randomQuestion);
+      currentPredefinedQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
+      appendMessage('Eno Bot', currentPredefinedQuestion);
     }
 
     // Function to send message to AI
@@ -530,7 +531,10 @@
         const response = await fetch('/api/chatgpt.mjs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: userInput })
+          body: JSON.stringify({
+            prompt: userInput,
+            predefinedQuestion: currentPredefinedQuestion
+          })
         });
 
         const data = await response.json();

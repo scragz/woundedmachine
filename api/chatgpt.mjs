@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { prompt } = req.body;
+  const { prompt, predefinedQuestion } = req.body;
 
   if (!prompt) {
     return res.status(400).json({ error: 'Prompt is required' });
@@ -56,6 +56,7 @@ export default async function handler(req, res) {
       model: 'gpt-3.5-turbo',
       messages: [
         { role: 'system', content: systemPrompt },
+        { role: 'system', content: `Context: The user was initially asked: "${predefinedQuestion}"` },
         { role: 'user', content: prompt }
       ],
       max_tokens: 500,
