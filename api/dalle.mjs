@@ -1,3 +1,14 @@
+// api/dalle.mjs
+
+import { Configuration, OpenAIApi } from 'openai';
+
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+const openai = new OpenAIApi(configuration);
+
+
 // New API call for DALL-E image generation
 const systemPrompt = `
 You are an AI assistant specialized in generating creative and vivid image descriptions based on user prompts. Your task is to take the user's input and expand it into a detailed, imaginative description that can be used to generate an image. Focus on visual elements, colors, composition, and mood. Be creative and artistic in your descriptions.
