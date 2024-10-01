@@ -494,6 +494,50 @@
       margin-top: 20px;
     }
 
+    /* CSS Loading Animation */
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading {
+      width: 50px;
+      height: 50px;
+      border: 5px solid var(--neon-blue-1);
+      border-top: 5px solid var(--vivid-pink-1);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    /* CSS Error Icon */
+    .error-icon {
+      width: 50px;
+      height: 50px;
+      position: relative;
+      transform: rotate(45deg);
+    }
+
+    .error-icon::before,
+    .error-icon::after {
+      content: '';
+      position: absolute;
+      background: var(--vivid-pink-1);
+    }
+
+    .error-icon::before {
+      left: 50%;
+      width: 5px;
+      margin-left: -2.5px;
+      height: 100%;
+    }
+
+    .error-icon::after {
+      top: 50%;
+      height: 5px;
+      margin-top: -2.5px;
+      width: 100%;
+    }
+
     /* Starburst Image as Footer */
     .starburst {
       width: 100%;
@@ -745,10 +789,10 @@
       if (!dreamInput) return;
 
       const dreamImage = document.getElementById('dream-image');
-      dreamImage.style.backgroundImage = 'url("images/loading.gif")';
+      dreamImage.innerHTML = '<div class="loading"></div>';
 
       try {
-        const response = await fetch('/api/chatgpt.mjs', {
+        const response = await fetch('/api/dalle.mjs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: dreamInput })
@@ -757,12 +801,13 @@
         const data = await response.json();
         if (data.imageUrl) {
           dreamImage.style.backgroundImage = `url("${data.imageUrl}")`;
+          dreamImage.innerHTML = '';
         } else {
-          dreamImage.style.backgroundImage = 'url("images/error.png")';
+          dreamImage.innerHTML = '<div class="error-icon"></div>';
         }
       } catch (error) {
         console.error('Error:', error);
-        dreamImage.style.backgroundImage = 'url("images/error.png")';
+        dreamImage.innerHTML = '<div class="error-icon"></div>';
       }
     }
 
