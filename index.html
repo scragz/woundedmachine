@@ -49,39 +49,6 @@
       position: relative;
     }
 
-    /* Particle Animation */
-    .particle {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: var(--neon-green-1); /* Neon Green */
-      opacity: 0.5;
-      border-radius: 50%;
-      animation: move 10s linear infinite;
-    }
-
-    @keyframes move {
-      from {
-        transform: translateY(-10px) translateX(0);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(100vh) translateX(50px);
-        opacity: 1;
-      }
-    }
-
-    /* Generate particles */
-    .particle-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -3;
-    }
-
     /* Background Quotes */
     .glitch-container {
       position: fixed;
@@ -160,38 +127,24 @@
     }
 
     .additional-images .piece {
-      width: 10px; /* Smaller size for better fragmentation */
-      height: 10px;
+      width: 20px; /* Increased size for better fragmentation */
+      height: 20px;
       background-size: 100% 100%; /* Ensure background covers the whole div */
       background-repeat: no-repeat;
       position: absolute;
-      /* Random opacity for subtle effect */
-      opacity: 0.8;
-      /* Apply glitch and fade animations */
-      animation: glitch-fade 5s infinite;
+      opacity: 1;
+      animation: fragment-fall 5s forwards;
     }
 
-    /* Glitch and Fade Animation */
-    @keyframes glitch-fade {
+    /* Fragment Fall Animation */
+    @keyframes fragment-fall {
       0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0.8;
-      }
-      25% {
-        transform: translate(5px, -5px) rotate(5deg);
-        opacity: 1;
-      }
-      50% {
-        transform: translate(-5px, 5px) rotate(-5deg);
-        opacity: 0.8;
-      }
-      75% {
-        transform: translate(5px, 5px) rotate(5deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 1;
       }
       100% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 0.8;
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
       }
     }
 
@@ -477,8 +430,8 @@
       }
 
       .additional-images .piece {
-        width: 8px; /* Adjusted size for smaller screens */
-        height: 8px;
+        width: 15px; /* Adjusted size for smaller screens */
+        height: 15px;
       }
 
       .starburst {
@@ -515,8 +468,8 @@
       }
 
       .additional-images .piece {
-        width: 5px; /* Further adjusted size for mobile */
-        height: 5px;
+        width: 10px; /* Further adjusted size for mobile */
+        height: 10px;
       }
 
       .starburst {
@@ -527,9 +480,6 @@
   </style>
 </head>
 <body>
-  
-  <!-- Particle Container -->
-  <div class="particle-container" id="particle-container"></div>
   
   <!-- Background Quotes -->
   <div class="glitch-container">
@@ -595,16 +545,6 @@
   </div>
 
   <script>
-    // Generate random particles
-    const particleContainer = document.getElementById('particle-container');
-    for(let i = 0; i < 150; i++) {
-      const particle = document.createElement('div');
-      particle.classList.add('particle');
-      particle.style.left = Math.random() * 100 + 'vw';
-      particle.style.animationDuration = 5 + Math.random() * 10 + 's';
-      particleContainer.appendChild(particle);
-    }
-
     // Generate additional glitched image pieces
     const additionalImagesContainer = document.getElementById('additional-images');
     const imageFiles = ['eye.png', 'hand.png', 'mouth.png'];
@@ -615,15 +555,14 @@
         const piece = document.createElement('div');
         piece.classList.add('piece');
         piece.style.backgroundImage = `url('images/${image}')`;
-        piece.style.backgroundSize = '100% 100%';
 
         // Calculate background position to show only a fragment
         const bgPosX = Math.floor(Math.random() * 100); // Percentage
         const bgPosY = Math.floor(Math.random() * 100); // Percentage
         piece.style.backgroundPosition = `${bgPosX}% ${bgPosY}%`;
 
-        // Random size between 5px and 10px
-        const size = Math.floor(Math.random() * 5) + 5;
+        // Random size between 15px and 20px
+        const size = Math.floor(Math.random() * 5) + 15;
         piece.style.width = `${size}px`;
         piece.style.height = `${size}px`;
 
