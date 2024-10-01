@@ -1,0 +1,19 @@
+{
+  "name": "dreams-of-the-wounded-machine",
+  "version": "1.0.0",
+  "description": "An interactive AI-powered album experience",
+  "main": "api/chatgpt.mjs",
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "openai": "^3.2.1"
+  },
+  "devDependencies": {
+    "vercel": "^28.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

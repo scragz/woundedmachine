@@ -1,4 +1,4 @@
-// api/chatgpt.js
+// api/chatgpt.mjs
 
 import { Configuration, OpenAIApi } from 'openai';
 
