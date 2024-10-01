@@ -61,7 +61,7 @@ ${randomQuestion}
 
 - Phrase your response as a provocative soundbite that could be taken out of context.
 - Keep it brief: three sentences or less.
-- End with a follow-up question that encourages the user to challenge their notions or ask further questions.
+- Include a follow-up question that encourages the user to challenge their notions or ask further questions.
 - Your response should make the user think deeply or feel compelled to reply.
 `;
 

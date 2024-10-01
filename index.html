@@ -788,6 +788,9 @@ Today, SPLASTEEN has entered the studio and will be performing the completed wor
       if (conversationStarted) return;
       conversationStarted = true;
 
+      // Show typing indicator
+      document.getElementById('typing-indicator').style.display = 'flex';
+
       try {
         const response = await fetch('/api/chatgpt.mjs', {
           method: 'POST',
@@ -806,6 +809,9 @@ Today, SPLASTEEN has entered the studio and will be performing the completed wor
       } catch (error) {
         console.error('Error:', error);
         appendMessage('Eno Bot', 'Sorry, something went wrong.');
+      } finally {
+        // Hide typing indicator
+        document.getElementById('typing-indicator').style.display = 'none';
       }
     }
 
