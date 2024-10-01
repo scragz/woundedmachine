@@ -301,11 +301,11 @@
       background: var(--bright-cyan-4); /* Another Bright Cyan Variant */
     }
 
-    /* Starburst Image in Top Right */
+    /* Starburst Image in Top Left */
     .starburst {
       position: fixed;
       top: 10px;
-      right: 10px;
+      left: 10px;
       width: 220px;
       height: 120px;
       background-image: url('images/contains-ai.png');
@@ -399,7 +399,7 @@
     <!-- Add more quotes as needed -->
   </div>
 
-  <!-- Starburst Image in Top Right -->
+  <!-- Starburst Image in Top Left -->
   <div class="starburst"></div>
 
   <div class="container">
@@ -422,6 +422,7 @@
       </div>
       <div class="chat-input">
         <input type="text" id="user-input" placeholder="Respond to AI Brian Eno...">
+        <button id="send-button">Send</button>
       </div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing</div>
       <div class="predefined-questions">
@@ -524,6 +525,17 @@
     // Automatically start conversation on page load
     window.onload = () => {
       initiateConversation();
+
+      // Add event listener for send button
+      document.getElementById('send-button').addEventListener('click', sendMessage);
+
+      // Add event listener for Enter key
+      document.getElementById('user-input').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          sendMessage();
+        }
+      });
     };
   </script>
 </body>
