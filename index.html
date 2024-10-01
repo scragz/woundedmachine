@@ -5,34 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DREAMS OF THE WOUNDED MACHINE</title>
   <style>
-    /* Define Color Palette */
-    :root {
-      /* Neon Green */
-      --neon-green1: #06e7a1;
-      --neon-green2: #09e39c;
-      --neon-green3: #10f3a7;
-      --neon-green4: #14f4a9;
-
-      /* Bright Cyan */
-      --bright-cyan1: #21f3a8;
-      --bright-cyan2: #22f7ad;
-      --bright-cyan3: #28f0ab;
-      --bright-cyan4: #2af8af;
-
-      /* Vivid Pink */
-      --vivid-pink1: #ff0080;
-      --vivid-pink2: #e60073;
-      --vivid-pink3: #ff66b2;
-
-      /* Neon Blue */
-      --neon-blue1: #2ac1f6;
-      --neon-blue2: #2ccce2;
-      --neon-blue3: #28d2ae;
-
-      /* Electric Purple */
-      --electric-purple1: #7d00ff;
-      --electric-purple2: #9900e6;
-    }
+    /* Importing Retro-Futuristic Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap');
 
     /* Reset and Base Styles */
     * {
@@ -44,8 +18,8 @@
     body {
       font-family: 'Orbitron', sans-serif;
       background-color: #000;
-      color: var(--vivid-pink1); /* Vivid Pink */
-      overflow-y: scroll; /* Enable scrollbar */
+      color: #ff0080; /* Vivid Pink */
+      overflow: auto; /* Enable scrollbar */
       position: relative;
     }
 
@@ -54,7 +28,7 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: var(--neon-green1); /* Neon Green */
+      background: #06e7a1; /* Neon Green */
       opacity: 0.5;
       border-radius: 50%;
       animation: move 10s linear infinite;
@@ -82,7 +56,7 @@
       z-index: -3;
     }
 
-    /* Background Glitched Quotes */
+    /* Background Quotes */
     .glitch-container {
       position: fixed;
       top: 0;
@@ -99,30 +73,26 @@
     }
 
     .glitch-quote {
-      position: relative;
-      color: var(--bright-cyan1); /* Bright Cyan */
+      color: #21f3a8; /* Bright Cyan */
       font-size: 1.5rem;
       mix-blend-mode: screen;
       user-select: none;
-      padding: 10px;
+      padding: 20px;
       white-space: nowrap;
       margin: 5px;
-      /* Assign different static fonts */
     }
 
+    /* Assign different static fonts to quotes */
     .glitch-quote.font1 {
       font-family: 'Roboto Mono', monospace;
-      text-shadow: 2px 2px var(--electric-purple1);
     }
 
     .glitch-quote.font2 {
       font-family: 'Press Start 2P', cursive;
-      text-shadow: 2px 2px var(--neon-blue1);
     }
 
     .glitch-quote.font3 {
       font-family: 'Orbitron', sans-serif;
-      text-shadow: 2px 2px var(--bright-cyan2);
     }
 
     /* Main Container */
@@ -162,9 +132,10 @@
       position: absolute;
       top: 20%;
       left: 10%;
+      width: 80%;
+      height: 80%;
       display: flex;
       flex-wrap: wrap;
-      gap: 2px;
       pointer-events: none;
       opacity: 0.7;
       z-index: -1;
@@ -173,13 +144,64 @@
     .additional-images .piece {
       width: 20px;
       height: 20px;
-      background-size: 100px 100px; /* Assuming original images are 100x100 */
-      background-repeat: no-repeat;
-      animation: computer-glitch 4s infinite;
+      background-size: cover;
+      background-position: center;
       position: absolute;
+      animation: fragment-move 10s linear infinite;
     }
 
-    /* Computer glitch effect */
+    /* Fragment Movement Animation */
+    @keyframes fragment-move {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(100px, 100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Audio Player */
+    .audio-player {
+      margin-bottom: 40px;
+      background: #2ccce2; /* Neon Blue */
+      border-radius: 10px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: none; /* Removed neon glow */
+    }
+
+    audio {
+      width: 100%;
+      outline: none;
+      border: none;
+      background: #222;
+      height: 40px;
+    }
+
+    /* Chat Widget */
+    .chat-container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.85);
+      padding: 20px;
+      border: 3px solid #7d00ff; /* Electric Purple */
+      border-radius: 15px;
+      color: #ff66b2; /* Vivid Pink */
+      box-shadow: 0 0 20px #7d00ff;
+    }
+
+    .chat-header {
+      text-align: center;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: #2ac1f6; /* Neon Blue */
+      position: relative;
+      animation: computer-glitch 3s infinite;
+    }
+
+    /* Glitch Effect on Chat Header */
     @keyframes computer-glitch {
       0% {
         clip: rect(42px, 9999px, 44px, 0);
@@ -267,72 +289,14 @@
       }
     }
 
-    /* Audio Player */
-    .audio-player {
-      margin-bottom: 40px;
-      /* Removed neon glow and border */
-      background: #222;
-      border-radius: 10px;
-      overflow: hidden;
-      width: 300px;
-      box-shadow: none;
-    }
-
-    audio {
-      width: 100%;
-      outline: none;
-      border: none;
-      /* Custom styling */
-      background: #333;
-      height: 40px;
-      /* Remove default audio controls styles */
-      /* Some browsers may not allow full styling */
-    }
-
-    /* Chat Widget */
-    .chat-container {
-      width: 100%;
-      max-width: 600px;
-      background: rgba(0, 0, 0, 0.85);
-      padding: 20px;
-      border: 3px solid var(--electric-purple1); /* Electric Purple */
-      border-radius: 15px;
-      color: var(--vivid-pink1); /* Vivid Pink */
-      box-shadow: 0 0 20px var(--electric-purple1);
-      /* Remove glitch animation to make foreground static */
-    }
-
-    .chat-header {
-      text-align: center;
-      margin-bottom: 15px;
-      font-size: 1.5rem;
-      color: var(--bright-cyan2); /* Bright Cyan */
-      position: relative;
-      /* Apply glitch effect */
-      animation: computer-glitch 3s infinite;
-    }
-
-    /* Neon Underline */
-    .chat-header::after {
-      content: '';
-      display: block;
-      width: 50px;
-      height: 3px;
-      background: var(--electric-purple1);
-      margin: 10px auto 0;
-      box-shadow: 0 0 10px var(--electric-purple1), 0 0 20px var(--electric-purple1);
-    }
-
     .chat-messages {
       height: 350px;
       overflow-y: auto;
       background: #111;
       padding: 15px;
-      border: 2px solid var(--neon-green1); /* Neon Green */
+      border: 2px solid #06e7a1; /* Neon Green */
       border-radius: 10px;
       margin-bottom: 15px;
-      position: relative;
-      /* Removed glitch animation */
     }
 
     .message {
@@ -344,29 +308,27 @@
 
     .message.user .text {
       align-self: flex-end;
-      background: var(--vivid-pink1); /* Vivid Pink */
+      background: #ff66b2; /* Vivid Pink */
       color: #000;
       border-radius: 10px 10px 0 10px;
       padding: 10px;
       max-width: 80%;
-      box-shadow: 0 0 10px var(--vivid-pink1);
-      position: relative;
+      box-shadow: 0 0 10px #ff66b2;
     }
 
     .message.ai .text {
       align-self: flex-start;
-      background: var(--bright-cyan1); /* Bright Cyan */
+      background: #21f3a8; /* Bright Cyan */
       color: #000;
       border-radius: 10px 10px 10px 0;
       padding: 10px;
       max-width: 80%;
-      box-shadow: 0 0 10px var(--bright-cyan1);
-      position: relative;
+      box-shadow: 0 0 10px #21f3a8;
     }
 
     .timestamp {
       font-size: 0.8rem;
-      color: var(--neon-green1);
+      color: #2af8af; /* Bright Cyan Variant */
       margin-top: 5px;
       align-self: flex-end;
     }
@@ -385,23 +347,23 @@
       outline: none;
       background: #222;
       color: #fff;
-      box-shadow: inset 0 0 5px var(--bright-cyan2);
+      box-shadow: inset 0 0 5px #09e39c; /* Neon Green Variant */
     }
 
     .chat-input button {
       padding: 12px 20px;
       border: none;
-      background: var(--bright-cyan3); /* Bright Cyan */
+      background: #7d00ff; /* Electric Purple */
       color: #000;
       font-size: 1rem;
       cursor: pointer;
       border-radius: 0 10px 10px 0;
       transition: background 0.3s;
-      box-shadow: 0 0 10px var(--bright-cyan3);
+      box-shadow: 0 0 10px #7d00ff;
     }
 
     .chat-input button:hover {
-      background: var(--bright-cyan4);
+      background: #9900e6; /* Darker Electric Purple */
     }
 
     /* Typing Indicator */
@@ -409,7 +371,7 @@
       display: flex;
       align-items: center;
       font-size: 0.9rem;
-      color: var(--neon-green1);
+      color: #2ccce2; /* Neon Blue */
       margin-top: 10px;
     }
 
@@ -425,11 +387,26 @@
     }
 
     /* Predefined Questions Buttons */
-    /* Removed the 'Start Conversation' button as conversation starts automatically */
+    .predefined-questions {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
 
-    /* Additional Images Styling */
-    .additional-images {
-      /* Already defined above */
+    .question-btn {
+      padding: 8px 12px;
+      background: #28f0ab; /* Bright Cyan Variant */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .question-btn:hover {
+      background: #2af8af; /* Another Bright Cyan Variant */
     }
 
     /* Starburst Floating in Top Right */
@@ -440,8 +417,7 @@
       width: 220px;
       height: 120px;
       background-image: url('images/contains-ai.png');
-      background-size: contain; /* Ensure the image is contained */
-      background-repeat: no-repeat;
+      background-size: cover;
       background-position: center;
       animation: float-starburst 10s ease-in-out infinite;
       z-index: -2;
@@ -474,7 +450,6 @@
       .additional-images {
         top: 15%;
         left: 5%;
-        flex-wrap: wrap;
       }
 
       .additional-images .piece {
@@ -521,11 +496,10 @@
       }
 
       .starburst {
-        width: 140px;
+        width: 150px;
         height: 80px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -561,7 +535,7 @@
 
   <!-- Additional Glitched Images -->
   <div class="additional-images" id="additional-images">
-    <!-- Pieces will be generated by JavaScript -->
+    <!-- Fragments will be generated by JavaScript -->
   </div>
 
   <!-- Starburst Floating in Top Right -->
@@ -590,6 +564,9 @@
         <button onclick="sendMessage()">Send</button>
       </div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing</div>
+      <div class="predefined-questions">
+        <button class="question-btn" onclick="initiateConversation()">Start Conversation</button>
+      </div>
     </div>
   </div>
 
@@ -607,7 +584,7 @@
     // Generate additional glitched image pieces
     const additionalImagesContainer = document.getElementById('additional-images');
     const imageFiles = ['eye.png', 'hand.png', 'mouth.png'];
-    const piecesPerImage = 20; // Number of pieces per image
+    const piecesPerImage = 30; // Number of pieces per image
 
     imageFiles.forEach(image => {
       for(let i = 0; i < piecesPerImage; i++) {
@@ -615,18 +592,10 @@
         piece.classList.add('piece');
         piece.style.backgroundImage = `url('images/${image}')`;
 
-        // Assuming original image size is 100x100, set background-size accordingly
-        piece.style.backgroundSize = '100px 100px';
-
-        // Random size between 10px and 20px
-        const size = Math.floor(Math.random() * 10) + 10;
+        // Random size between 10px and 30px
+        const size = Math.floor(Math.random() * 20) + 10;
         piece.style.width = `${size}px`;
         piece.style.height = `${size}px`;
-
-        // Calculate random background-position to show a fragment
-        const bgPosX = -Math.floor(Math.random() * (100 - size));
-        const bgPosY = -Math.floor(Math.random() * (100 - size));
-        piece.style.backgroundPosition = `${bgPosX}px ${bgPosY}px`;
 
         // Random position within the container
         const posX = Math.random() * 100;
@@ -722,7 +691,7 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Automatically start conversation on page load
+    // Optional: Automatically start conversation on page load
     window.onload = () => {
       initiateConversation();
     };
