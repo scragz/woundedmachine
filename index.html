@@ -863,22 +863,24 @@ Today, SPLASTEEN has entered the studio and will be performing the completed wor
     }
 
     // Function to load dream files
-    async function loadDreamFiles() {
-      try {
-        const response = await fetch('/api/dreams.mjs');
-        const files = await response.json();
+    function loadDreamFiles() {
+      const imageFiles = [
+        'mouth.png',
+        'hand.png',
+        'eye.png',
+      ];
+      const audioFiles = [
+        'evolving-textured-pad.mp3',
+        'metallic-harmonic-resonances.mp3',
+        'shimmering-sine-cascade.mp3',
+        'whispering-static-ascend.mp3',
+      ];
 
-        const imageFiles = files.images;
-        const audioFiles = files.audio;
+      const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length)];
+      const randomAudio = audioFiles[Math.floor(Math.random() * audioFiles.length)];
 
-        const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length)];
-        const randomAudio = audioFiles[Math.floor(Math.random() * audioFiles.length)];
-
-        document.getElementById('dream-image').src = `images/dreams/${randomImage}`;
-        document.getElementById('dream-audio').src = `files/dreams/${randomAudio}`;
-      } catch (error) {
-        console.error('Error loading dream files:', error);
-      }
+      document.getElementById('dream-image').src = `images/dreams/${randomImage}`;
+      document.getElementById('dream-audio').src = `files/dreams/${randomAudio}`;
     }
 
     // Load dream files and start conversation on page load
