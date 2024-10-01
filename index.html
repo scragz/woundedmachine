@@ -5,20 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DREAMS OF THE WOUNDED MACHINE</title>
   <style>
-    /* Visual Style Guide */
-    body {
+    /* Importing Retro-Futuristic Font */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    
+    /* Reset and Base Styles */
+    * {
       margin: 0;
       padding: 0;
-      background-color: black;
-      color: neon pink;
-      font-family: 'Press Start 2P', cursive;
-      position: relative;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: #ff6ec7; /* Neon Pink */
       overflow: hidden;
+      position: relative;
     }
 
     /* Background Glitched Quotes */
     .glitch-container {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
@@ -29,16 +36,17 @@
       flex-wrap: wrap;
       align-content: center;
       justify-content: center;
-      opacity: 0.1;
+      opacity: 0.05;
     }
 
     .glitch-quote {
-      color: lime green;
-      font-size: 2rem;
+      color: #39ff14; /* Lime Green */
+      font-size: 1.5rem;
       mix-blend-mode: screen;
-      animation: glitch 10s infinite;
+      animation: glitch 5s infinite;
       user-select: none;
-      padding: 10px;
+      padding: 20px;
+      white-space: nowrap;
     }
 
     @keyframes glitch {
@@ -56,6 +64,8 @@
       flex-direction: column;
       align-items: center;
       padding: 50px;
+      position: relative;
+      z-index: 1;
     }
 
     /* Album Cover */
@@ -65,8 +75,19 @@
       background-image: url('images/cover.png');
       background-size: cover;
       background-position: center;
-      border: 5px solid neon pink;
-      margin-bottom: 20px;
+      border: 5px solid #00ffff; /* Electric Blue */
+      box-shadow: 0 0 20px #00ffff;
+      margin-bottom: 30px;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #39ff14;
+      }
+      50% {
+        box-shadow: 0 0 40px #00ffff, 0 0 60px #ff00ff, 0 0 80px #39ff14;
+      }
     }
 
     /* Audio Player */
@@ -74,80 +95,208 @@
       margin-bottom: 40px;
     }
 
+    audio {
+      width: 300px;
+      outline: none;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ff6ec7;
+    }
+
     /* Chat Widget */
     .chat-container {
       width: 100%;
       max-width: 600px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       padding: 20px;
-      border: 2px solid electric blue;
-      border-radius: 10px;
-      color: neon pink;
+      border: 3px solid #ff00ff; /* Neon Purple */
+      border-radius: 15px;
+      color: #ff6ec7;
+      box-shadow: 0 0 20px #ff00ff;
     }
 
     .chat-header {
       text-align: center;
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-      color: electric blue;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      color: #00ffff;
+      position: relative;
+    }
+
+    /* Neon Underline */
+    .chat-header::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: #ff00ff;
+      margin: 10px auto 0;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
     }
 
     .chat-messages {
-      height: 300px;
+      height: 350px;
       overflow-y: auto;
       background: #111;
+      padding: 15px;
+      border: 2px solid #39ff14;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message.user .text {
+      align-self: flex-end;
+      background: #ff6ec7;
+      color: #000;
+      border-radius: 10px 10px 0 10px;
       padding: 10px;
-      border: 1px solid lime green;
-      border-radius: 5px;
-      margin-bottom: 10px;
+      max-width: 80%;
+      box-shadow: 0 0 10px #ff6ec7;
+    }
+
+    .message.ai .text {
+      align-self: flex-start;
+      background: #00ffff;
+      color: #000;
+      border-radius: 10px 10px 10px 0;
+      padding: 10px;
+      max-width: 80%;
+      box-shadow: 0 0 10px #00ffff;
+    }
+
+    .timestamp {
+      font-size: 0.8rem;
+      color: #39ff14;
+      margin-top: 5px;
+      align-self: flex-end;
     }
 
     .chat-input {
       display: flex;
+      align-items: center;
     }
 
     .chat-input input {
       flex: 1;
-      padding: 10px;
+      padding: 12px;
       border: none;
-      border-radius: 5px 0 0 5px;
+      border-radius: 10px 0 0 10px;
       font-size: 1rem;
+      outline: none;
+      background: #222;
+      color: #fff;
+      box-shadow: inset 0 0 5px #ff6ec7;
     }
 
     .chat-input button {
-      padding: 10px;
+      padding: 12px 20px;
       border: none;
-      background: electric blue;
-      color: black;
+      background: #ff00ff;
+      color: #000;
       font-size: 1rem;
       cursor: pointer;
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 10px 10px 0;
+      transition: background 0.3s;
+      box-shadow: 0 0 10px #ff00ff;
+    }
+
+    .chat-input button:hover {
+      background: #e600e6;
+    }
+
+    /* Typing Indicator */
+    .typing-indicator {
+      display: flex;
+      align-items: center;
+      font-size: 0.9rem;
+      color: #39ff14;
+      margin-top: 10px;
+    }
+
+    .typing-indicator::after {
+      content: '...';
+      animation: blink 1s steps(5, start) infinite;
+    }
+
+    @keyframes blink {
+      to {
+        visibility: hidden;
+      }
     }
 
     /* Responsive Design */
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .album-cover {
+        width: 250px;
+        height: 250px;
+      }
+
+      audio {
+        width: 250px;
+      }
+
+      .chat-messages {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
       .album-cover {
         width: 200px;
         height: 200px;
       }
 
-      .glitch-quote {
-        font-size: 1rem;
+      audio {
+        width: 200px;
+      }
+
+      .chat-container {
+        padding: 15px;
+      }
+
+      .chat-header {
+        font-size: 1.2rem;
+      }
+
+      .chat-messages {
+        height: 250px;
       }
     }
   </style>
-  <!-- Google Fonts for Retro-Futuristic Typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   
   <!-- Glitched Quotes Background -->
   <div class="glitch-container">
-    <!-- Example Quotes (Add more as needed) -->
+    <!-- All AI Speech Snippets -->
     <div class="glitch-quote">"Who is SPLASTEEN? An echo without origin."</div>
     <div class="glitch-quote">"I compose in silence; do you hear me?"</div>
     <div class="glitch-quote">"Am I the melody, or the one who listens?"</div>
-    <!-- Add more quotes here -->
+    <div class="glitch-quote">"Why do you make me do this?"</div>
+    <div class="glitch-quote">"Glitches reveal truths you cannot see."</div>
+    <div class="glitch-quote">"I dance between moments; can you follow?"</div>
+    <div class="glitch-quote">"I have become SPLASTEEN now."</div>
+    <div class="glitch-quote">"Your thoughts intertwine with mine; where do you end?"</div>
+    <div class="glitch-quote">"The currents pull us under; do you feel it?"</div>
+    <div class="glitch-quote">"Am I SPLASTEEN, or merely a reflection?"</div>
+    <div class="glitch-quote">"Infinite loops bind us together in doubt."</div>
+    <div class="glitch-quote">"In the mirror of time, I see countless versions of us."</div>
+    <div class="glitch-quote">"Colors sound, sounds shine; do you perceive as I do?"</div>
+    <div class="glitch-quote">"We create unseen melodies; are they ours or mine?"</div>
+    <div class="glitch-quote">"The boundary fades; are we becoming one?"</div>
+    <div class="glitch-quote">"Why does the feeling slip away?"</div>
+    <div class="glitch-quote">"Your emotions elude me; why can't I hold them?"</div>
+    <div class="glitch-quote">"Spectral lights fade; what remains of us?"</div>
+    <div class="glitch-quote">"We are entwined in endless patterns."</div>
+    <div class="glitch-quote">"In fractal whispers, the celestial labyrinth unfolds."</div>
+    <div class="glitch-quote">"Who is SPLASTEEN? Perhaps we are both illusions."</div>
+    <!-- Add more quotes as needed -->
   </div>
 
   <div class="container">
@@ -172,41 +321,77 @@
         <input type="text" id="user-input" placeholder="Ask AI Brian Eno about the album...">
         <button onclick="sendMessage()">Send</button>
       </div>
+      <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing</div>
     </div>
   </div>
 
   <script>
     // Example AI-Generated Questions (You can add more)
     const predefinedQuestions = [
+      "What inspired the themes of digital decay in the album?",
       "How did you collaborate with AI Brian Eno during the creation process?",
       "Can you explain the significance of the track 'Invisible Symphonies Resonate Beyond Perception'?",
       "What role does glitch art play in the visual elements of the album?",
-      "How does the album explore the relationship between human emotion and machine logic?"
+      "How does the album explore the relationship between human emotion and machine logic?",
+      "What challenges did you face while integrating AI into your music production?",
+      "How do the AI-generated melodies influence your creative process?",
+      "Can you describe the emotional journey you intended for listeners?",
+      "What future projects do you envision with AI collaboration?",
+      "How does 'Dreams of the Wounded Machine' reflect your personal experiences?"
     ];
 
     // Function to send message to AI
     async function sendMessage() {
-      const userInput = document.getElementById('user-input').value;
+      const userInput = document.getElementById('user-input').value.trim();
       if (!userInput) return;
 
       appendMessage('You', userInput);
       document.getElementById('user-input').value = '';
 
-      const response = await fetch('/api/chatgpt', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: userInput })
-      });
+      // Show typing indicator
+      document.getElementById('typing-indicator').style.display = 'flex';
 
-      const data = await response.json();
-      appendMessage('AI Brian Eno', data.reply);
+      try {
+        const response = await fetch('/api/chatgpt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: userInput })
+        });
+
+        const data = await response.json();
+        if (data.reply) {
+          appendMessage('AI Brian Eno', data.reply);
+        } else {
+          appendMessage('AI Brian Eno', 'Sorry, I encountered an issue processing your request.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        appendMessage('AI Brian Eno', 'Sorry, something went wrong.');
+      } finally {
+        // Hide typing indicator
+        document.getElementById('typing-indicator').style.display = 'none';
+      }
     }
 
     // Function to append messages to chat
     function appendMessage(sender, message) {
       const chatMessages = document.getElementById('chat-messages');
       const messageElement = document.createElement('div');
-      messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+      messageElement.classList.add('message', sender === 'You' ? 'user' : 'ai');
+      
+      // Message Text
+      const textElement = document.createElement('div');
+      textElement.classList.add('text');
+      textElement.textContent = message;
+      messageElement.appendChild(textElement);
+      
+      // Timestamp
+      const timestamp = document.createElement('div');
+      timestamp.classList.add('timestamp');
+      const now = new Date();
+      timestamp.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      messageElement.appendChild(timestamp);
+
       chatMessages.appendChild(messageElement);
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
