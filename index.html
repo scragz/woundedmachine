@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DREAMS OF THE WOUNDED MACHINE</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   <style>
     /* Define Color Palette as CSS Variables */
     :root {
@@ -183,6 +187,39 @@
       background-size: cover;
       background-position: center;
       margin-bottom: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .album-cover::before,
+    .album-cover::after,
+    .album-cover .rgb-layer {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: inherit;
+      background-size: inherit;
+      background-position: inherit;
+    }
+
+    .album-cover::before {
+      left: -2px;
+      background-color: rgba(255, 0, 0, 0.3);
+      mix-blend-mode: screen;
+    }
+
+    .album-cover::after {
+      left: 2px;
+      background-color: rgba(0, 0, 255, 0.3);
+      mix-blend-mode: screen;
+    }
+
+    .album-cover .rgb-layer {
+      background-color: rgba(0, 255, 0, 0.3);
+      mix-blend-mode: screen;
     }
 
     /* Audio Player */
@@ -509,6 +546,39 @@
       border: 2px solid var(--neon-green-1);
       border-radius: 10px;
       margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dream-image::before,
+    .dream-image::after,
+    .dream-image .rgb-layer {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: inherit;
+      background-size: inherit;
+      background-position: inherit;
+    }
+
+    .dream-image::before {
+      left: -2px;
+      background-color: rgba(255, 0, 0, 0.3);
+      mix-blend-mode: screen;
+    }
+
+    .dream-image::after {
+      left: 2px;
+      background-color: rgba(0, 0, 255, 0.3);
+      mix-blend-mode: screen;
+    }
+
+    .dream-image .rgb-layer {
+      background-color: rgba(0, 255, 0, 0.3);
+      mix-blend-mode: screen;
     }
 
     .dream-see,
@@ -940,19 +1010,6 @@
       </audio>
     </div>
 
-    <!-- Chat Widget -->
-    <div class="chat-container">
-      <div class="chat-header" data-text="Talk to Eno Bot About the Album">Talk to Eno Bot About the Album</div>
-      <div class="chat-messages" id="chat-messages">
-        <!-- Chat messages will appear here -->
-      </div>
-      <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Respond to Eno Bot...">
-        <button id="send-button">Send</button>
-      </div>
-      <div id="typing-indicator" class="typing-indicator" style="display: none;"></div>
-    </div>
-
     <!-- What Do You Dream Section -->
     <div class="dream-section">
       <h2 class="dream-header" data-text="What Do You Dream?">What Do You Dream?</h2>
@@ -1049,6 +1106,19 @@
         <p><strong>– AI Brian Eno</strong><br>
         In collaboration with SPLASTEEN, AI Frank Zappa, and AI Tim Hecker</p>
       </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-container">
+      <div class="chat-header" data-text="Talk to Eno Bot About the Album">Talk to Eno Bot About the Album</div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Chat messages will appear here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Respond to Eno Bot...">
+        <button id="send-button">Send</button>
+      </div>
+      <div id="typing-indicator" class="typing-indicator" style="display: none;"></div>
     </div>
 
     <!-- Prompt Section -->
@@ -1322,12 +1392,6 @@
 
         ---
 
-        ### Track Details
-
-        Below are the details for this track. Make sure to use anything pre generated such as a theme or percussion loop.
-
-        ---
-
 
       </pre>
     </div>
@@ -1441,8 +1505,8 @@
 
     // Function to load dream files
     function loadDreamFiles() {
-      const imageFiles = ["cat1.jpeg", "crown.jpeg", "deathmask.jpeg", "demon.jpeg", "eye.png", "hand2.jpeg", "mouth.png", "skull.jpeg", "smile.jpeg", "three-faces.jpeg"];
-      const audioFiles = [
+      const imageFiles = ['track-01.png', 'track-02.png', 'track-03.png', 'track-04.png', 'track-05.png', 'track-06.png', 'track-07.png',];
+      const audioFiles = [,
         'evolving-textured-pad.mp3',
         'metallic-harmonic-resonances.mp3',
         'shimmering-sine-cascade.mp3',
