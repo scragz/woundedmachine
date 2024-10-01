@@ -5,8 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DREAMS OF THE WOUNDED MACHINE</title>
   <style>
-    /* Importing Retro-Futuristic Fonts */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap');
+    /* Define Color Palette as CSS Variables */
+    :root {
+      /* Neon Green */
+      --neon-green-1: #06e7a1;
+      --neon-green-2: #09e39c;
+      --neon-green-3: #10f3a7;
+      --neon-green-4: #14f4a9;
+
+      /* Bright Cyan */
+      --bright-cyan-1: #21f3a8;
+      --bright-cyan-2: #22f7ad;
+      --bright-cyan-3: #28f0ab;
+      --bright-cyan-4: #2af8af;
+
+      /* Vivid Pink */
+      --vivid-pink-1: #ff0080;
+      --vivid-pink-2: #e60073;
+      --vivid-pink-3: #ff66b2;
+
+      /* Neon Blue */
+      --neon-blue-1: #2ac1f6;
+      --neon-blue-2: #2ccce2;
+      --neon-blue-3: #28d2ae;
+
+      /* Electric Purple */
+      --electric-purple-1: #7d00ff;
+      --electric-purple-2: #9900e6;
+    }
 
     /* Reset and Base Styles */
     * {
@@ -18,7 +44,7 @@
     body {
       font-family: 'Orbitron', sans-serif;
       background-color: #000;
-      color: #ff0080; /* Vivid Pink */
+      color: var(--vivid-pink-1); /* Vivid Pink */
       overflow: auto; /* Enable scrollbar */
       position: relative;
     }
@@ -28,7 +54,7 @@
       position: absolute;
       width: 3px;
       height: 3px;
-      background: #06e7a1; /* Neon Green */
+      background: var(--neon-green-1); /* Neon Green */
       opacity: 0.5;
       border-radius: 50%;
       animation: move 10s linear infinite;
@@ -73,7 +99,7 @@
     }
 
     .glitch-quote {
-      color: #21f3a8; /* Bright Cyan */
+      color: var(--bright-cyan-1); /* Bright Cyan */
       font-size: 1.5rem;
       mix-blend-mode: screen;
       user-select: none;
@@ -114,17 +140,9 @@
       background-position: center;
       /* Removed border and glow */
       margin-bottom: 30px;
-      animation: pulse 3s infinite;
+      /* Removed pulsate animation */
+      /* Removed glitch animation */
       filter: none; /* Removed any filter */
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
     }
 
     /* Additional Glitched Images */
@@ -144,25 +162,13 @@
     .additional-images .piece {
       width: 20px;
       height: 20px;
-      background-size: cover;
+      background-size: 100% 100%; /* Ensure background covers the whole image */
       background-position: center;
+      background-repeat: no-repeat;
       position: absolute;
-      animation: fragment-move 10s linear infinite;
     }
 
-    /* Fragment Movement Animation */
-    @keyframes fragment-move {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(100px, 100px) rotate(360deg);
-        opacity: 0;
-      }
-    }
-
-    /* Audio Player */
+    /* Media Player */
     .audio-player {
       margin-bottom: 40px;
       background: #2ccce2; /* Neon Blue */
@@ -186,17 +192,17 @@
       max-width: 600px;
       background: rgba(0, 0, 0, 0.85);
       padding: 20px;
-      border: 3px solid #7d00ff; /* Electric Purple */
+      border: 3px solid var(--electric-purple-1); /* Electric Purple */
       border-radius: 15px;
-      color: #ff66b2; /* Vivid Pink */
-      box-shadow: 0 0 20px #7d00ff;
+      color: var(--vivid-pink-3); /* Vivid Pink */
+      box-shadow: 0 0 20px var(--electric-purple-1);
     }
 
     .chat-header {
       text-align: center;
       margin-bottom: 15px;
       font-size: 1.5rem;
-      color: #2ac1f6; /* Neon Blue */
+      color: var(--neon-blue-1); /* Neon Blue */
       position: relative;
       animation: computer-glitch 3s infinite;
     }
@@ -294,7 +300,7 @@
       overflow-y: auto;
       background: #111;
       padding: 15px;
-      border: 2px solid #06e7a1; /* Neon Green */
+      border: 2px solid var(--neon-green-1); /* Neon Green */
       border-radius: 10px;
       margin-bottom: 15px;
     }
@@ -308,27 +314,27 @@
 
     .message.user .text {
       align-self: flex-end;
-      background: #ff66b2; /* Vivid Pink */
+      background: var(--vivid-pink-3); /* Vivid Pink */
       color: #000;
       border-radius: 10px 10px 0 10px;
       padding: 10px;
       max-width: 80%;
-      box-shadow: 0 0 10px #ff66b2;
+      box-shadow: 0 0 10px var(--vivid-pink-3);
     }
 
     .message.ai .text {
       align-self: flex-start;
-      background: #21f3a8; /* Bright Cyan */
+      background: var(--bright-cyan-1); /* Bright Cyan */
       color: #000;
       border-radius: 10px 10px 10px 0;
       padding: 10px;
       max-width: 80%;
-      box-shadow: 0 0 10px #21f3a8;
+      box-shadow: 0 0 10px var(--bright-cyan-1);
     }
 
     .timestamp {
       font-size: 0.8rem;
-      color: #2af8af; /* Bright Cyan Variant */
+      color: var(--bright-cyan-4); /* Bright Cyan Variant */
       margin-top: 5px;
       align-self: flex-end;
     }
@@ -347,23 +353,23 @@
       outline: none;
       background: #222;
       color: #fff;
-      box-shadow: inset 0 0 5px #09e39c; /* Neon Green Variant */
+      box-shadow: inset 0 0 5px var(--neon-green-2); /* Neon Green Variant */
     }
 
     .chat-input button {
       padding: 12px 20px;
       border: none;
-      background: #7d00ff; /* Electric Purple */
+      background: var(--electric-purple-1); /* Electric Purple */
       color: #000;
       font-size: 1rem;
       cursor: pointer;
       border-radius: 0 10px 10px 0;
       transition: background 0.3s;
-      box-shadow: 0 0 10px #7d00ff;
+      box-shadow: 0 0 10px var(--electric-purple-1);
     }
 
     .chat-input button:hover {
-      background: #9900e6; /* Darker Electric Purple */
+      background: var(--electric-purple-2); /* Darker Electric Purple */
     }
 
     /* Typing Indicator */
@@ -371,7 +377,7 @@
       display: flex;
       align-items: center;
       font-size: 0.9rem;
-      color: #2ccce2; /* Neon Blue */
+      color: var(--neon-blue-2); /* Neon Blue Variant */
       margin-top: 10px;
     }
 
@@ -396,7 +402,7 @@
 
     .question-btn {
       padding: 8px 12px;
-      background: #28f0ab; /* Bright Cyan Variant */
+      background: var(--bright-cyan-3); /* Bright Cyan Variant */
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -406,7 +412,7 @@
     }
 
     .question-btn:hover {
-      background: #2af8af; /* Another Bright Cyan Variant */
+      background: var(--bright-cyan-4); /* Another Bright Cyan Variant */
     }
 
     /* Starburst Floating in Top Right */
@@ -419,17 +425,8 @@
       background-image: url('images/contains-ai.png');
       background-size: cover;
       background-position: center;
-      animation: float-starburst 10s ease-in-out infinite;
+      /* Removed floating animation to make it static */
       z-index: -2;
-    }
-
-    @keyframes float-starburst {
-      0%, 100% {
-        transform: translate(0, 0);
-      }
-      50% {
-        transform: translate(-20px, 20px);
-      }
     }
 
     /* Responsive Design */
@@ -507,7 +504,7 @@
   <!-- Particle Container -->
   <div class="particle-container" id="particle-container"></div>
   
-  <!-- Glitched Quotes Background -->
+  <!-- Background Quotes -->
   <div class="glitch-container">
     <!-- All AI Speech Snippets with different static fonts -->
     <div class="glitch-quote font1">"Who is SPLASTEEN? An echo without origin."</div>
@@ -538,7 +535,7 @@
     <!-- Fragments will be generated by JavaScript -->
   </div>
 
-  <!-- Starburst Floating in Top Right -->
+  <!-- Starburst Image in Top Right -->
   <div class="starburst"></div>
 
   <div class="container">
@@ -591,9 +588,11 @@
         const piece = document.createElement('div');
         piece.classList.add('piece');
         piece.style.backgroundImage = `url('images/${image}')`;
+        piece.style.backgroundSize = '100% 100%';
+        piece.style.backgroundPosition = `${Math.floor(Math.random() * 100)}% ${Math.floor(Math.random() * 100)}%`;
 
-        // Random size between 10px and 30px
-        const size = Math.floor(Math.random() * 20) + 10;
+        // Random size between 10px and 20px
+        const size = Math.floor(Math.random() * 10) + 10;
         piece.style.width = `${size}px`;
         piece.style.height = `${size}px`;
 
@@ -607,6 +606,7 @@
         const rotation = Math.floor(Math.random() * 360);
         piece.style.transform = `rotate(${rotation}deg)`;
 
+        // No movement animations
         additionalImagesContainer.appendChild(piece);
       }
     });
@@ -691,7 +691,7 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Optional: Automatically start conversation on page load
+    // Automatically start conversation on page load
     window.onload = () => {
       initiateConversation();
     };
