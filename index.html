@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DREAMS OF THE WOUNDED MACHINE</title>
+  <style>
+    /* Visual Style Guide */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: neon pink;
+      font-family: 'Press Start 2P', cursive;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background Glitched Quotes */
+    .glitch-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: center;
+      justify-content: center;
+      opacity: 0.1;
+    }
+
+    .glitch-quote {
+      color: lime green;
+      font-size: 2rem;
+      mix-blend-mode: screen;
+      animation: glitch 10s infinite;
+      user-select: none;
+      padding: 10px;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Main Container */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px;
+    }
+
+    /* Album Cover */
+    .album-cover {
+      width: 300px;
+      height: 300px;
+      background-image: url('images/cover.png');
+      background-size: cover;
+      background-position: center;
+      border: 5px solid neon pink;
+      margin-bottom: 20px;
+    }
+
+    /* Audio Player */
+    .audio-player {
+      margin-bottom: 40px;
+    }
+
+    /* Chat Widget */
+    .chat-container {
+      width: 100%;
+      max-width: 600px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border: 2px solid electric blue;
+      border-radius: 10px;
+      color: neon pink;
+    }
+
+    .chat-header {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: electric blue;
+    }
+
+    .chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      background: #111;
+      padding: 10px;
+      border: 1px solid lime green;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .chat-input {
+      display: flex;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 5px 0 0 5px;
+      font-size: 1rem;
+    }
+
+    .chat-input button {
+      padding: 10px;
+      border: none;
+      background: electric blue;
+      color: black;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 0 5px 5px 0;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 600px) {
+      .album-cover {
+        width: 200px;
+        height: 200px;
+      }
+
+      .glitch-quote {
+        font-size: 1rem;
+      }
+    }
+  </style>
+  <!-- Google Fonts for Retro-Futuristic Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <!-- Glitched Quotes Background -->
+  <div class="glitch-container">
+    <!-- Example Quotes (Add more as needed) -->
+    <div class="glitch-quote">"Who is SPLASTEEN? An echo without origin."</div>
+    <div class="glitch-quote">"I compose in silence; do you hear me?"</div>
+    <div class="glitch-quote">"Am I the melody, or the one who listens?"</div>
+    <!-- Add more quotes here -->
+  </div>
+
+  <div class="container">
+    <!-- Album Cover -->
+    <div class="album-cover"></div>
+
+    <!-- Audio Player -->
+    <div class="audio-player">
+      <audio controls preload="auto">
+        <source src="files/track-01.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-container">
+      <div class="chat-header">Talk to AI Brian Eno about the Album</div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Chat messages will appear here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Ask AI Brian Eno about the album...">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Example AI-Generated Questions (You can add more)
+    const predefinedQuestions = [
+      "What inspired the themes of digital decay in the album?",
+      "How did you collaborate with AI Brian Eno during the creation process?",
+      "Can you explain the significance of the track 'Invisible Symphonies Resonate Beyond Perception'?",
+      "What role does glitch art play in the visual elements of the album?",
+      "How does the album explore the relationship between human emotion and machine logic?"
+    ];
+
+    // Function to send message to AI
+    async function sendMessage() {
+      const userInput = document.getElementById('user-input').value;
+      if (!userInput) return;
+
+      appendMessage('You', userInput);
+      document.getElementById('user-input').value = '';
+
+      const response = await fetch('/api/chatgpt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: userInput })
+      });
+
+      const data = await response.json();
+      appendMessage('AI Brian Eno', data.reply);
+    }
+
+    // Function to append messages to chat
+    function appendMessage(sender, message) {
+      const chatMessages = document.getElementById('chat-messages');
+      const messageElement = document.createElement('div');
+      messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Optional: Prompt user with a random question on page load
+    window.onload = () => {
+      const randomQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
+      appendMessage('AI Brian Eno', `Here's a question to get you started: "${randomQuestion}"`);
+    };
+  </script>
+</body>
+</html>
