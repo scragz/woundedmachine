@@ -812,7 +812,7 @@ Today, SPLASTEEN has entered the studio and will be performing the completed wor
     // Function to load dream files
     async function loadDreamFiles() {
       try {
-        const response = await fetch('/api/dreams');
+        const response = await fetch('/api/dreams.mjs');
         const files = await response.json();
 
         const imageFiles = files.images;
