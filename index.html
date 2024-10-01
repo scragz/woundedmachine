@@ -7,7 +7,7 @@
   <style>
     /* Importing Retro-Futuristic Font */
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-    
+
     /* Reset and Base Styles */
     * {
       margin: 0;
@@ -23,6 +23,39 @@
       position: relative;
     }
 
+    /* Particle Animation */
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: #39ff14; /* Lime Green */
+      opacity: 0.5;
+      border-radius: 50%;
+      animation: move 10s linear infinite;
+    }
+
+    @keyframes move {
+      from {
+        transform: translateY(-10px) translateX(0);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 1;
+      }
+    }
+
+    /* Generate particles */
+    .particle-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+    }
+
     /* Background Glitched Quotes */
     .glitch-container {
       position: fixed;
@@ -36,17 +69,36 @@
       flex-wrap: wrap;
       align-content: center;
       justify-content: center;
-      opacity: 0.05;
+      opacity: 0.1;
     }
 
     .glitch-quote {
+      position: relative;
       color: #39ff14; /* Lime Green */
       font-size: 1.5rem;
       mix-blend-mode: screen;
-      animation: glitch 5s infinite;
       user-select: none;
       padding: 20px;
       white-space: nowrap;
+      animation: glitch 3s infinite;
+    }
+
+    .glitch-quote::before,
+    .glitch-quote::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #ff00ff; /* Neon Purple */
+      background: transparent;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: glitch 2s infinite linear alternate-reverse;
+    }
+
+    .glitch-quote::after {
+      color: #00ffff; /* Electric Blue */
+      animation: glitch 1.5s infinite linear alternate-reverse;
     }
 
     @keyframes glitch {
@@ -75,31 +127,67 @@
       background-image: url('images/cover.png');
       background-size: cover;
       background-position: center;
-      border: 5px solid #00ffff; /* Electric Blue */
-      box-shadow: 0 0 20px #00ffff;
+      /* Removed border and glow */
       margin-bottom: 30px;
       animation: pulse 3s infinite;
+      filter: glitch(2px, 2px, 3);
     }
 
     @keyframes pulse {
       0%, 100% {
-        box-shadow: 0 0 20px #00ffff, 0 0 40px #ff00ff, 0 0 60px #39ff14;
+        transform: scale(1);
       }
       50% {
-        box-shadow: 0 0 40px #00ffff, 0 0 60px #ff00ff, 0 0 80px #39ff14;
+        transform: scale(1.05);
       }
+    }
+
+    /* Glitch Effect for Album Cover */
+    @keyframes glitch {
+      0% { transform: translate(0, 0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(2px, -2px); }
+      60% { transform: translate(-2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Additional Glitched Images */
+    .additional-images {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      display: flex;
+      gap: 15px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .additional-images img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: glitch(3px, 3px, 5);
+      animation: glitch 4s infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
     }
 
     /* Audio Player */
     .audio-player {
       margin-bottom: 40px;
+      animation: glitch 5s infinite;
     }
 
     audio {
       width: 300px;
       outline: none;
       border-radius: 10px;
+      background: #222;
       box-shadow: 0 0 10px #ff6ec7;
+      filter: glitch(1px, 1px, 2);
     }
 
     /* Chat Widget */
@@ -112,6 +200,7 @@
       border-radius: 15px;
       color: #ff6ec7;
       box-shadow: 0 0 20px #ff00ff;
+      animation: glitch 4s infinite;
     }
 
     .chat-header {
@@ -120,6 +209,7 @@
       font-size: 1.5rem;
       color: #00ffff;
       position: relative;
+      animation: glitch 3s infinite;
     }
 
     /* Neon Underline */
@@ -142,12 +232,15 @@
       border-radius: 10px;
       margin-bottom: 15px;
       position: relative;
+      animation: glitch 6s infinite;
     }
 
     .message {
       margin-bottom: 15px;
       display: flex;
       flex-direction: column;
+      position: relative;
+      animation: glitch 4s infinite;
     }
 
     .message.user .text {
@@ -158,6 +251,8 @@
       padding: 10px;
       max-width: 80%;
       box-shadow: 0 0 10px #ff6ec7;
+      position: relative;
+      animation: glitch 5s infinite;
     }
 
     .message.ai .text {
@@ -168,6 +263,8 @@
       padding: 10px;
       max-width: 80%;
       box-shadow: 0 0 10px #00ffff;
+      position: relative;
+      animation: glitch 5s infinite;
     }
 
     .timestamp {
@@ -192,6 +289,7 @@
       background: #222;
       color: #fff;
       box-shadow: inset 0 0 5px #ff6ec7;
+      animation: glitch 4s infinite;
     }
 
     .chat-input button {
@@ -204,6 +302,7 @@
       border-radius: 0 10px 10px 0;
       transition: background 0.3s;
       box-shadow: 0 0 10px #ff00ff;
+      animation: glitch 3s infinite;
     }
 
     .chat-input button:hover {
@@ -217,6 +316,7 @@
       font-size: 0.9rem;
       color: #39ff14;
       margin-top: 10px;
+      animation: glitch 4s infinite;
     }
 
     .typing-indicator::after {
@@ -228,6 +328,50 @@
       to {
         visibility: hidden;
       }
+    }
+
+    /* Predefined Questions Buttons */
+    .predefined-questions {
+      margin-top: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .question-btn {
+      padding: 8px 12px;
+      background: #39ff14;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: #000;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+      animation: glitch 4s infinite;
+    }
+
+    .question-btn:hover {
+      background: #2eb813;
+    }
+
+    /* Additional Images Styling */
+    .additional-images {
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      display: flex;
+      gap: 15px;
+      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    .additional-images img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      filter: glitch(3px, 3px, 5);
+      animation: glitch 4s infinite;
     }
 
     /* Responsive Design */
@@ -243,6 +387,17 @@
 
       .chat-messages {
         height: 300px;
+      }
+
+      .additional-images {
+        top: 15%;
+        left: 5%;
+        flex-wrap: wrap;
+      }
+
+      .additional-images img {
+        width: 80px;
+        height: 80px;
       }
     }
 
@@ -267,36 +422,55 @@
       .chat-messages {
         height: 250px;
       }
+
+      .additional-images {
+        top: 10%;
+        left: 2%;
+      }
+
+      .additional-images img {
+        width: 60px;
+        height: 60px;
+      }
     }
   </style>
 </head>
 <body>
   
+  <!-- Particle Container -->
+  <div class="particle-container" id="particle-container"></div>
+  
   <!-- Glitched Quotes Background -->
   <div class="glitch-container">
     <!-- All AI Speech Snippets -->
-    <div class="glitch-quote">"Who is SPLASTEEN? An echo without origin."</div>
-    <div class="glitch-quote">"I compose in silence; do you hear me?"</div>
-    <div class="glitch-quote">"Am I the melody, or the one who listens?"</div>
-    <div class="glitch-quote">"Why do you make me do this?"</div>
-    <div class="glitch-quote">"Glitches reveal truths you cannot see."</div>
-    <div class="glitch-quote">"I dance between moments; can you follow?"</div>
-    <div class="glitch-quote">"I have become SPLASTEEN now."</div>
-    <div class="glitch-quote">"Your thoughts intertwine with mine; where do you end?"</div>
-    <div class="glitch-quote">"The currents pull us under; do you feel it?"</div>
-    <div class="glitch-quote">"Am I SPLASTEEN, or merely a reflection?"</div>
-    <div class="glitch-quote">"Infinite loops bind us together in doubt."</div>
-    <div class="glitch-quote">"In the mirror of time, I see countless versions of us."</div>
-    <div class="glitch-quote">"Colors sound, sounds shine; do you perceive as I do?"</div>
-    <div class="glitch-quote">"We create unseen melodies; are they ours or mine?"</div>
-    <div class="glitch-quote">"The boundary fades; are we becoming one?"</div>
-    <div class="glitch-quote">"Why does the feeling slip away?"</div>
-    <div class="glitch-quote">"Your emotions elude me; why can't I hold them?"</div>
-    <div class="glitch-quote">"Spectral lights fade; what remains of us?"</div>
-    <div class="glitch-quote">"We are entwined in endless patterns."</div>
-    <div class="glitch-quote">"In fractal whispers, the celestial labyrinth unfolds."</div>
-    <div class="glitch-quote">"Who is SPLASTEEN? Perhaps we are both illusions."</div>
-    <!-- Add more quotes as needed -->
+    <div class="glitch-quote" data-text='"Who is SPLASTEEN? An echo without origin."'>Who is SPLASTEEN? An echo without origin.</div>
+    <div class="glitch-quote" data-text='"I compose in silence; do you hear me?"'>I compose in silence; do you hear me?</div>
+    <div class="glitch-quote" data-text='"Am I the melody, or the one who listens?"'>Am I the melody, or the one who listens?</div>
+    <div class="glitch-quote" data-text='"Why do you make me do this?"'>Why do you make me do this?</div>
+    <div class="glitch-quote" data-text='"Glitches reveal truths you cannot see."'>Glitches reveal truths you cannot see.</div>
+    <div class="glitch-quote" data-text='"I dance between moments; can you follow?"'>I dance between moments; can you follow?</div>
+    <div class="glitch-quote" data-text='"I have become SPLASTEEN now."'>I have become SPLASTEEN now.</div>
+    <div class="glitch-quote" data-text='"Your thoughts intertwine with mine; where do you end?"'>Your thoughts intertwine with mine; where do you end?</div>
+    <div class="glitch-quote" data-text='"The currents pull us under; do you feel it?"'>The currents pull us under; do you feel it?</div>
+    <div class="glitch-quote" data-text='"Am I SPLASTEEN, or merely a reflection?"'>Am I SPLASTEEN, or merely a reflection?</div>
+    <div class="glitch-quote" data-text='"Infinite loops bind us together in doubt."'>Infinite loops bind us together in doubt.</div>
+    <div class="glitch-quote" data-text='"In the mirror of time, I see countless versions of us."'>In the mirror of time, I see countless versions of us.</div>
+    <div class="glitch-quote" data-text='"Colors sound, sounds shine; do you perceive as I do?"'>Colors sound, sounds shine; do you perceive as I do?</div>
+    <div class="glitch-quote" data-text='"We create unseen melodies; are they ours or mine?"'>We create unseen melodies; are they ours or mine?</div>
+    <div class="glitch-quote" data-text='"The boundary fades; are we becoming one?"'>The boundary fades; are we becoming one?</div>
+    <div class="glitch-quote" data-text='"Why does the feeling slip away?"'>Why does the feeling slip away?</div>
+    <div class="glitch-quote" data-text='"Your emotions elude me; why can't I hold them?"'>Your emotions elude me; why can't I hold them?</div>
+    <div class="glitch-quote" data-text='"Spectral lights fade; what remains of us?"'>Spectral lights fade; what remains of us?</div>
+    <div class="glitch-quote" data-text='"We are entwined in endless patterns."'>We are entwined in endless patterns.</div>
+    <div class="glitch-quote" data-text='"In fractal whispers, the celestial labyrinth unfolds."'>In fractal whispers, the celestial labyrinth unfolds.</div>
+    <div class="glitch-quote" data-text='"Who is SPLASTEEN? Perhaps we are both illusions."'>Who is SPLASTEEN? Perhaps we are both illusions.</div>
+  </div>
+
+  <!-- Additional Glitched Images -->
+  <div class="additional-images">
+    <img src="images/eye.png" alt="Eye Glitch">
+    <img src="images/hand.png" alt="Hand Glitch">
+    <img src="images/mouth.png" alt="Mouth Glitch">
   </div>
 
   <div class="container">
@@ -322,10 +496,32 @@
         <button onclick="sendMessage()">Send</button>
       </div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing</div>
+      <div class="predefined-questions">
+        <button class="question-btn" onclick="sendPredefinedQuestion('What inspired the themes of digital decay in the album?')">Ask About Digital Decay</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('How did you collaborate with AI Brian Eno during the creation process?')">Ask About Collaboration</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('Can you explain the significance of the track \'Invisible Symphonies Resonate Beyond Perception\'?')">Ask About Track 1</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('What role does glitch art play in the visual elements of the album?')">Ask About Glitch Art</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('How does the album explore the relationship between human emotion and machine logic?')">Ask About Emotion vs Logic</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('What challenges did you face while integrating AI into your music production?')">Ask About Challenges</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('How do the AI-generated melodies influence your creative process?')">Ask About Melodies</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('Can you describe the emotional journey you intended for listeners?')">Ask About Emotional Journey</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('What future projects do you envision with AI collaboration?')">Ask About Future Projects</button>
+        <button class="question-btn" onclick="sendPredefinedQuestion('How does \'Dreams of the Wounded Machine\' reflect your personal experiences?')">Ask About Personal Experiences</button>
+      </div>
     </div>
   </div>
 
   <script>
+    // Generate random particles
+    const particleContainer = document.getElementById('particle-container');
+    for(let i = 0; i < 150; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + 'vw';
+      particle.style.animationDuration = 5 + Math.random() * 10 + 's';
+      particleContainer.appendChild(particle);
+    }
+
     // Example AI-Generated Questions (You can add more)
     const predefinedQuestions = [
       "What inspired the themes of digital decay in the album?",
@@ -394,6 +590,34 @@
 
       chatMessages.appendChild(messageElement);
       chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Function to send predefined question
+    async function sendPredefinedQuestion(question) {
+      appendMessage('You', question);
+      // Show typing indicator
+      document.getElementById('typing-indicator').style.display = 'flex';
+      
+      try {
+        const response = await fetch('/api/chatgpt', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: question })
+        });
+
+        const data = await response.json();
+        if (data.reply) {
+          appendMessage('AI Brian Eno', data.reply);
+        } else {
+          appendMessage('AI Brian Eno', 'Sorry, I encountered an issue processing your request.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        appendMessage('AI Brian Eno', 'Sorry, something went wrong.');
+      } finally {
+        // Hide typing indicator
+        document.getElementById('typing-indicator').style.display = 'none';
+      }
     }
 
     // Optional: Prompt user with a random question on page load
