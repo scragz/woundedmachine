@@ -510,19 +510,71 @@
 
     .dream-content {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-bottom: 30px;
     }
 
     .dream-see, .dream-hear {
-      width: 100%;
-      margin-bottom: 20px;
+      width: 48%;
     }
 
     .dream-see h3, .dream-hear h3 {
       margin-bottom: 10px;
       color: var(--neon-green-1);
+      position: relative;
+      display: inline-block;
+    }
+
+    .dream-see h3::before,
+    .dream-see h3::after,
+    .dream-hear h3::before,
+    .dream-hear h3::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dream-see h3::before {
+      left: 1px;
+      text-shadow: -1px 0 var(--vivid-pink-2);
+      animation: see-glitch 2s infinite linear alternate-reverse;
+    }
+
+    .dream-see h3::after {
+      left: -1px;
+      text-shadow: 1px 0 var(--neon-blue-1);
+      animation: see-glitch 3s infinite linear alternate-reverse;
+    }
+
+    .dream-hear h3::before {
+      left: 1px;
+      text-shadow: -1px 0 var(--electric-purple-1);
+      animation: hear-glitch 2.5s infinite linear alternate-reverse;
+    }
+
+    .dream-hear h3::after {
+      left: -1px;
+      text-shadow: 1px 0 var(--bright-cyan-1);
+      animation: hear-glitch 3.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes see-glitch {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      25% { clip-path: inset(0 25% 0 0); }
+      50% { clip-path: inset(25% 0 25% 0); }
+      75% { clip-path: inset(0 0 0 25%); }
+    }
+
+    @keyframes hear-glitch {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      20% { clip-path: inset(20% 0 20% 0); }
+      40% { clip-path: inset(0 20% 0 20%); }
+      60% { clip-path: inset(10% 10% 10% 10%); }
+      80% { clip-path: inset(5% 15% 15% 5%); }
     }
 
     .dream-image {
@@ -553,6 +605,7 @@
       margin-bottom: 20px;
       position: relative;
       display: inline-block;
+      width: 100%;
     }
 
     .prompt-header::before,
@@ -637,6 +690,15 @@
 
       .dream-subheader {
         font-size: 1.2rem;
+      }
+
+      .dream-content {
+        flex-direction: column;
+      }
+
+      .dream-see, .dream-hear {
+        width: 100%;
+        margin-bottom: 20px;
       }
 
       .dream-image, .dream-audio {
