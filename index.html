@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DREAMS OF THE WOUNDED MACHINE</title>
   <style>
-    /* Importing Retro-Futuristic Font */
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+    /* Importing Retro-Futuristic Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Press+Start+2P&family=Roboto+Mono:wght@400;700&display=swap');
 
     /* Reset and Base Styles */
     * {
@@ -53,7 +53,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: -2;
+      z-index: -3;
     }
 
     /* Background Glitched Quotes */
@@ -69,7 +69,7 @@
       flex-wrap: wrap;
       align-content: center;
       justify-content: center;
-      opacity: 0.1;
+      opacity: 0.15;
     }
 
     .glitch-quote {
@@ -80,34 +80,117 @@
       user-select: none;
       padding: 20px;
       white-space: nowrap;
-      animation: glitch 3s infinite;
+      animation: computer-glitch 3s infinite;
+      margin: 5px;
     }
 
-    .glitch-quote::before,
-    .glitch-quote::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: #ff00ff; /* Neon Purple */
-      background: transparent;
-      overflow: hidden;
-      clip: rect(0, 900px, 0, 0);
-      animation: glitch 2s infinite linear alternate-reverse;
-    }
-
-    .glitch-quote::after {
-      color: #00ffff; /* Electric Blue */
-      animation: glitch 1.5s infinite linear alternate-reverse;
-    }
-
-    @keyframes glitch {
-      0% { transform: translate(0, 0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, -2px); }
-      60% { transform: translate(-2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0, 0); }
+    /* Glitch Effect using provided CSS */
+    @keyframes computer-glitch {
+      0% {
+        clip: rect(42px, 9999px, 44px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      5% {
+        clip: rect(12px, 9999px, 79px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      10% {
+        clip: rect(85px, 9999px, 90px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
+      15% {
+        clip: rect(15px, 9999px, 100px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      20% {
+        clip: rect(50px, 9999px, 60px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      25% {
+        clip: rect(20px, 9999px, 30px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
+      30% {
+        clip: rect(70px, 9999px, 80px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      35% {
+        clip: rect(10px, 9999px, 40px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      40% {
+        clip: rect(60px, 9999px, 70px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
+      45% {
+        clip: rect(30px, 9999px, 50px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      50% {
+        clip: rect(80px, 9999px, 90px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      55% {
+        clip: rect(25px, 9999px, 35px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
+      60% {
+        clip: rect(55px, 9999px, 65px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      65% {
+        clip: rect(5px, 9999px, 15px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      70% {
+        clip: rect(95px, 9999px, 105px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
+      75% {
+        clip: rect(35px, 9999px, 45px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      80% {
+        clip: rect(65px, 9999px, 75px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      85% {
+        clip: rect(0px, 9999px, 10px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
+      90% {
+        clip: rect(40px, 9999px, 50px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Roboto Mono', monospace;
+      }
+      95% {
+        clip: rect(90px, 9999px, 100px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Press Start 2P', cursive;
+      }
+      100% {
+        clip: rect(20px, 9999px, 30px, 0);
+        transform: skew(0.5deg);
+        font-family: 'Orbitron', sans-serif;
+      }
     }
 
     /* Main Container */
@@ -129,8 +212,8 @@
       background-position: center;
       /* Removed border and glow */
       margin-bottom: 30px;
-      animation: pulse 3s infinite;
-      filter: glitch(2px, 2px, 3);
+      animation: pulse 3s infinite, computer-glitch 4s infinite;
+      filter: none; /* Removed any filter */
     }
 
     @keyframes pulse {
@@ -142,16 +225,6 @@
       }
     }
 
-    /* Glitch Effect for Album Cover */
-    @keyframes glitch {
-      0% { transform: translate(0, 0); }
-      20% { transform: translate(-2px, 2px); }
-      40% { transform: translate(2px, -2px); }
-      60% { transform: translate(-2px, 2px); }
-      80% { transform: translate(2px, -2px); }
-      100% { transform: translate(0, 0); }
-    }
-
     /* Additional Glitched Images */
     .additional-images {
       position: absolute;
@@ -159,26 +232,92 @@
       left: 10%;
       display: flex;
       gap: 15px;
-      animation: float 6s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.7;
+      z-index: -1;
     }
 
     .additional-images img {
       width: 100px;
       height: 100px;
       object-fit: contain;
-      filter: glitch(3px, 3px, 5);
       animation: glitch 4s infinite;
+      /* Broken into pieces using CSS */
+      clip-path: polygon(0% 0%, 50% 0%, 50% 50%, 0% 50%);
+      position: absolute;
+      /* Random positions */
+      top: 0;
+      left: 0;
+      transform: rotate(45deg);
+      filter: hue-rotate(90deg);
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
+    /* Overlapping Pieces for Broken Images */
+    /* Example for eye.png, hand.png, mouth.png */
+    .additional-images img:nth-child(1) {
+      background-image: url('images/eye.png');
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      top: 0;
+      left: 0;
+    }
+
+    .additional-images img:nth-child(2) {
+      background-image: url('images/eye.png');
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      top: 0;
+      left: 50px;
+    }
+
+    .additional-images img:nth-child(3) {
+      background-image: url('images/hand.png');
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      top: 50px;
+      left: 0;
+    }
+
+    .additional-images img:nth-child(4) {
+      background-image: url('images/hand.png');
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      top: 50px;
+      left: 50px;
+    }
+
+    .additional-images img:nth-child(5) {
+      background-image: url('images/mouth.png');
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      top: 100px;
+      left: 0;
+    }
+
+    .additional-images img:nth-child(6) {
+      background-image: url('images/mouth.png');
+      background-size: cover;
+      background-position: center;
+      width: 50px;
+      height: 50px;
+      top: 100px;
+      left: 50px;
     }
 
     /* Audio Player */
     .audio-player {
       margin-bottom: 40px;
-      animation: glitch 5s infinite;
+      animation: computer-glitch 5s infinite;
     }
 
     audio {
@@ -187,7 +326,7 @@
       border-radius: 10px;
       background: #222;
       box-shadow: 0 0 10px #ff6ec7;
-      filter: glitch(1px, 1px, 2);
+      /* Removed any filter */
     }
 
     /* Chat Widget */
@@ -200,7 +339,7 @@
       border-radius: 15px;
       color: #ff6ec7;
       box-shadow: 0 0 20px #ff00ff;
-      animation: glitch 4s infinite;
+      animation: computer-glitch 4s infinite;
     }
 
     .chat-header {
@@ -209,7 +348,7 @@
       font-size: 1.5rem;
       color: #00ffff;
       position: relative;
-      animation: glitch 3s infinite;
+      animation: computer-glitch 3s infinite;
     }
 
     /* Neon Underline */
@@ -232,7 +371,7 @@
       border-radius: 10px;
       margin-bottom: 15px;
       position: relative;
-      animation: glitch 6s infinite;
+      animation: computer-glitch 6s infinite;
     }
 
     .message {
@@ -240,7 +379,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      animation: glitch 4s infinite;
+      animation: computer-glitch 4s infinite;
     }
 
     .message.user .text {
@@ -252,7 +391,7 @@
       max-width: 80%;
       box-shadow: 0 0 10px #ff6ec7;
       position: relative;
-      animation: glitch 5s infinite;
+      animation: computer-glitch 5s infinite;
     }
 
     .message.ai .text {
@@ -264,7 +403,7 @@
       max-width: 80%;
       box-shadow: 0 0 10px #00ffff;
       position: relative;
-      animation: glitch 5s infinite;
+      animation: computer-glitch 5s infinite;
     }
 
     .timestamp {
@@ -289,7 +428,7 @@
       background: #222;
       color: #fff;
       box-shadow: inset 0 0 5px #ff6ec7;
-      animation: glitch 4s infinite;
+      animation: computer-glitch 4s infinite;
     }
 
     .chat-input button {
@@ -302,7 +441,7 @@
       border-radius: 0 10px 10px 0;
       transition: background 0.3s;
       box-shadow: 0 0 10px #ff00ff;
-      animation: glitch 3s infinite;
+      animation: computer-glitch 3s infinite;
     }
 
     .chat-input button:hover {
@@ -316,7 +455,7 @@
       font-size: 0.9rem;
       color: #39ff14;
       margin-top: 10px;
-      animation: glitch 4s infinite;
+      animation: computer-glitch 4s infinite;
     }
 
     .typing-indicator::after {
@@ -336,6 +475,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      animation: computer-glitch 4s infinite;
     }
 
     .question-btn {
@@ -347,31 +487,11 @@
       color: #000;
       font-size: 0.9rem;
       transition: background 0.3s;
-      animation: glitch 4s infinite;
+      animation: computer-glitch 4s infinite;
     }
 
     .question-btn:hover {
       background: #2eb813;
-    }
-
-    /* Additional Images Styling */
-    .additional-images {
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      display: flex;
-      gap: 15px;
-      animation: float 6s ease-in-out infinite;
-      pointer-events: none;
-      opacity: 0.7;
-    }
-
-    .additional-images img {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      filter: glitch(3px, 3px, 5);
-      animation: glitch 4s infinite;
     }
 
     /* Responsive Design */
@@ -442,7 +562,7 @@
   
   <!-- Glitched Quotes Background -->
   <div class="glitch-container">
-    <!-- All AI Speech Snippets -->
+    <!-- All AI Speech Snippets with different fonts and styles -->
     <div class="glitch-quote" data-text='"Who is SPLASTEEN? An echo without origin."'>Who is SPLASTEEN? An echo without origin.</div>
     <div class="glitch-quote" data-text='"I compose in silence; do you hear me?"'>I compose in silence; do you hear me?</div>
     <div class="glitch-quote" data-text='"Am I the melody, or the one who listens?"'>Am I the melody, or the one who listens?</div>
@@ -468,9 +588,15 @@
 
   <!-- Additional Glitched Images -->
   <div class="additional-images">
-    <img src="images/eye.png" alt="Eye Glitch">
-    <img src="images/hand.png" alt="Hand Glitch">
-    <img src="images/mouth.png" alt="Mouth Glitch">
+    <!-- Breaking images into smaller pieces -->
+    <!-- Example: eye.png broken into 4 pieces -->
+    <div style="width: 50px; height: 50px; background-image: url('images/eye.png'); background-size: cover; top: 0; left: 0;"></div>
+    <div style="width: 50px; height: 50px; background-image: url('images/eye.png'); background-size: cover; top: 0; left: 50px;"></div>
+    <div style="width: 50px; height: 50px; background-image: url('images/hand.png'); background-size: cover; top: 50px; left: 0;"></div>
+    <div style="width: 50px; height: 50px; background-image: url('images/hand.png'); background-size: cover; top: 50px; left: 50px;"></div>
+    <div style="width: 50px; height: 50px; background-image: url('images/mouth.png'); background-size: cover; top: 100px; left: 0;"></div>
+    <div style="width: 50px; height: 50px; background-image: url('images/mouth.png'); background-size: cover; top: 100px; left: 50px;"></div>
+    <!-- Add more pieces as needed -->
   </div>
 
   <div class="container">
@@ -492,21 +618,12 @@
         <!-- Chat messages will appear here -->
       </div>
       <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Ask AI Brian Eno about the album...">
+        <input type="text" id="user-input" placeholder="Respond to AI Brian Eno...">
         <button onclick="sendMessage()">Send</button>
       </div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing</div>
       <div class="predefined-questions">
-        <button class="question-btn" onclick="sendPredefinedQuestion('What inspired the themes of digital decay in the album?')">Ask About Digital Decay</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('How did you collaborate with AI Brian Eno during the creation process?')">Ask About Collaboration</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('Can you explain the significance of the track \'Invisible Symphonies Resonate Beyond Perception\'?')">Ask About Track 1</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('What role does glitch art play in the visual elements of the album?')">Ask About Glitch Art</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('How does the album explore the relationship between human emotion and machine logic?')">Ask About Emotion vs Logic</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('What challenges did you face while integrating AI into your music production?')">Ask About Challenges</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('How do the AI-generated melodies influence your creative process?')">Ask About Melodies</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('Can you describe the emotional journey you intended for listeners?')">Ask About Emotional Journey</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('What future projects do you envision with AI collaboration?')">Ask About Future Projects</button>
-        <button class="question-btn" onclick="sendPredefinedQuestion('How does \'Dreams of the Wounded Machine\' reflect your personal experiences?')">Ask About Personal Experiences</button>
+        <button class="question-btn" onclick="initiateConversation()">Start Conversation</button>
       </div>
     </div>
   </div>
@@ -522,7 +639,7 @@
       particleContainer.appendChild(particle);
     }
 
-    // Example AI-Generated Questions (You can add more)
+    // AI-Generated Questions
     const predefinedQuestions = [
       "What inspired the themes of digital decay in the album?",
       "How did you collaborate with AI Brian Eno during the creation process?",
@@ -535,6 +652,16 @@
       "What future projects do you envision with AI collaboration?",
       "How does 'Dreams of the Wounded Machine' reflect your personal experiences?"
     ];
+
+    let conversationStarted = false;
+
+    // Function to initiate conversation with a random question
+    function initiateConversation() {
+      if (conversationStarted) return;
+      conversationStarted = true;
+      const randomQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
+      appendMessage('AI Brian Eno', randomQuestion);
+    }
 
     // Function to send message to AI
     async function sendMessage() {
@@ -592,38 +719,10 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Function to send predefined question
-    async function sendPredefinedQuestion(question) {
-      appendMessage('You', question);
-      // Show typing indicator
-      document.getElementById('typing-indicator').style.display = 'flex';
-      
-      try {
-        const response = await fetch('/api/chatgpt', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: question })
-        });
-
-        const data = await response.json();
-        if (data.reply) {
-          appendMessage('AI Brian Eno', data.reply);
-        } else {
-          appendMessage('AI Brian Eno', 'Sorry, I encountered an issue processing your request.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        appendMessage('AI Brian Eno', 'Sorry, something went wrong.');
-      } finally {
-        // Hide typing indicator
-        document.getElementById('typing-indicator').style.display = 'none';
-      }
-    }
-
-    // Optional: Prompt user with a random question on page load
+    // Optional: Automatically start conversation on page load
     window.onload = () => {
-      const randomQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
-      appendMessage('AI Brian Eno', `Here's a question to get you started: "${randomQuestion}"`);
+      // Uncomment the line below to automatically initiate conversation on load
+      // initiateConversation();
     };
   </script>
 </body>
