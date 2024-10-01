@@ -431,13 +431,13 @@
 
     <!-- Chat Widget -->
     <div class="chat-container">
-      <div class="chat-header" data-text="Talk to AI Brian Eno">Talk to AI Brian Eno</div>
+      <div class="chat-header" data-text="Talk to Eno Bot">Talk to Eno Bot</div>
       <div class="chat-header" data-text="About the Album">About the Album</div>
       <div class="chat-messages" id="chat-messages">
         <!-- Chat messages will appear here -->
       </div>
       <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Respond to AI Brian Eno...">
+        <input type="text" id="user-input" placeholder="Respond to Eno Bot...">
         <button id="send-button">Send</button>
       </div>
       <div id="typing-indicator" class="typing-indicator" style="display: none;">AI is typing</div>
@@ -479,7 +479,7 @@
       if (conversationStarted) return;
       conversationStarted = true;
       const randomQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
-      appendMessage('AI Brian Eno', randomQuestion);
+      appendMessage('Eno Bot', randomQuestion);
     }
 
     // Function to send message to AI
@@ -502,13 +502,13 @@
 
         const data = await response.json();
         if (data.reply) {
-          appendMessage('AI Brian Eno', data.reply);
+          appendMessage('Eno Bot', data.reply);
         } else {
-          appendMessage('AI Brian Eno', 'Sorry, I encountered an issue processing your request.');
+          appendMessage('Eno Bot', 'Sorry, I encountered an issue processing your request.');
         }
       } catch (error) {
         console.error('Error:', error);
-        appendMessage('AI Brian Eno', 'Sorry, something went wrong.');
+        appendMessage('Eno Bot', 'Sorry, something went wrong.');
       } finally {
         // Hide typing indicator
         document.getElementById('typing-indicator').style.display = 'none';
