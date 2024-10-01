@@ -781,26 +781,32 @@ Today, SPLASTEEN has entered the studio and will be performing the completed wor
       quote.style.setProperty('--random-left', randomLeft);
     });
 
-    // AI-Generated Questions
-    const predefinedQuestions = [
-      "Is your skepticism of AI art a fear of losing control over creativity?",
-      "Could rejecting AI in art be limiting the evolution of human expression?",
-      "Does collaborating with AI dilute human creativity, or enhance it?",
-      "Are we uncomfortable with AI art because it challenges what it means to be human?",
-      "Is AI art the evolution of creativity or its mechanical demise?",
-      "When algorithms design beauty, who claims the masterpiece?",
-      "Does the rise of AI in art signify the end of human uniqueness?",
-    ];
-
     let conversationStarted = false;
-    let currentPredefinedQuestion = '';
 
-    // Function to initiate conversation with a random question
-    function initiateConversation() {
+    // Function to initiate conversation
+    async function initiateConversation() {
       if (conversationStarted) return;
       conversationStarted = true;
-      currentPredefinedQuestion = predefinedQuestions[Math.floor(Math.random() * predefinedQuestions.length)];
-      appendMessage('Eno Bot', currentPredefinedQuestion);
+
+      try {
+        const response = await fetch('/api/chatgpt.mjs', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            prompt: 'initiate_conversation'
+          })
+        });
+
+        const data = await response.json();
+        if (data.reply) {
+          appendMessage('Eno Bot', data.reply);
+        } else {
+          appendMessage('Eno Bot', 'Sorry, I encountered an issue processing your request.');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        appendMessage('Eno Bot', 'Sorry, something went wrong.');
+      }
     }
 
     // Function to send message to AI
@@ -819,8 +825,7 @@ Today, SPLASTEEN has entered the studio and will be performing the completed wor
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            prompt: userInput,
-            predefinedQuestion: currentPredefinedQuestion
+            prompt: userInput
           })
         });
 

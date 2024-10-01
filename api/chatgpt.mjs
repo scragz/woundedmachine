@@ -42,12 +42,17 @@ Participate in the Q&A session, engaging with questions about "Dreams of the Wou
 Respond briefly in a conversational manner in two sentences or less.
 `;
 
+const initialQuestion = `
+Does the use of AI in art threaten the very essence of what it means to be an artist since a AI-generated art never possesses true human emotion?
+
+Phrase your response in a soundbite that can be taken out of context. End by asking a followup question.
+`;
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { prompt, predefinedQuestion } = req.body;
+  const { prompt } = req.body;
 
   if (!prompt) {
     return res.status(400).json({ error: 'Prompt is required' });
@@ -58,7 +63,7 @@ export default async function handler(req, res) {
       model: 'gpt-3.5-turbo',
       messages: [
         { role: 'system', content: systemPrompt },
-        { role: 'system', content: `Context: The user was initially asked: "${predefinedQuestion}"` },
+        { role: 'user', content: initialQuestion },
         { role: 'user', content: prompt }
       ],
       max_tokens: 500,
