@@ -160,15 +160,42 @@
     }
 
     .additional-images .piece {
-      width: 20px;
-      height: 20px;
-      background-size: 100% 100%; /* Ensure background covers the whole image */
-      background-position: center;
+      width: 10px; /* Smaller size for better fragmentation */
+      height: 10px;
+      background-size: 100% 100%; /* Ensure background covers the whole div */
       background-repeat: no-repeat;
       position: absolute;
+      /* Random opacity for subtle effect */
+      opacity: 0.8;
+      /* Apply glitch and fade animations */
+      animation: glitch-fade 5s infinite;
     }
 
-    /* Media Player */
+    /* Glitch and Fade Animation */
+    @keyframes glitch-fade {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.8;
+      }
+      25% {
+        transform: translate(5px, -5px) rotate(5deg);
+        opacity: 1;
+      }
+      50% {
+        transform: translate(-5px, 5px) rotate(-5deg);
+        opacity: 0.8;
+      }
+      75% {
+        transform: translate(5px, 5px) rotate(5deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 0.8;
+      }
+    }
+
+    /* Audio Player */
     .audio-player {
       margin-bottom: 40px;
       background: #2ccce2; /* Neon Blue */
@@ -415,7 +442,7 @@
       background: var(--bright-cyan-4); /* Another Bright Cyan Variant */
     }
 
-    /* Starburst Floating in Top Right */
+    /* Starburst Image in Top Right */
     .starburst {
       position: fixed;
       top: 10px;
@@ -450,8 +477,8 @@
       }
 
       .additional-images .piece {
-        width: 15px;
-        height: 15px;
+        width: 8px; /* Adjusted size for smaller screens */
+        height: 8px;
       }
 
       .starburst {
@@ -488,8 +515,8 @@
       }
 
       .additional-images .piece {
-        width: 10px;
-        height: 10px;
+        width: 5px; /* Further adjusted size for mobile */
+        height: 5px;
       }
 
       .starburst {
@@ -581,7 +608,7 @@
     // Generate additional glitched image pieces
     const additionalImagesContainer = document.getElementById('additional-images');
     const imageFiles = ['eye.png', 'hand.png', 'mouth.png'];
-    const piecesPerImage = 30; // Number of pieces per image
+    const piecesPerImage = 100; // Increased number for finer fragmentation
 
     imageFiles.forEach(image => {
       for(let i = 0; i < piecesPerImage; i++) {
@@ -589,10 +616,14 @@
         piece.classList.add('piece');
         piece.style.backgroundImage = `url('images/${image}')`;
         piece.style.backgroundSize = '100% 100%';
-        piece.style.backgroundPosition = `${Math.floor(Math.random() * 100)}% ${Math.floor(Math.random() * 100)}%`;
 
-        // Random size between 10px and 20px
-        const size = Math.floor(Math.random() * 10) + 10;
+        // Calculate background position to show only a fragment
+        const bgPosX = Math.floor(Math.random() * 100); // Percentage
+        const bgPosY = Math.floor(Math.random() * 100); // Percentage
+        piece.style.backgroundPosition = `${bgPosX}% ${bgPosY}%`;
+
+        // Random size between 5px and 10px
+        const size = Math.floor(Math.random() * 5) + 5;
         piece.style.width = `${size}px`;
         piece.style.height = `${size}px`;
 
@@ -606,7 +637,6 @@
         const rotation = Math.floor(Math.random() * 360);
         piece.style.transform = `rotate(${rotation}deg)`;
 
-        // No movement animations
         additionalImagesContainer.appendChild(piece);
       }
     });
