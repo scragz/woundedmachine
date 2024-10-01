@@ -140,6 +140,9 @@
       margin-bottom: 40px;
       width: 100%;
       max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .audio-player-label {
@@ -147,6 +150,10 @@
       color: var(--vivid-pink-3);
       margin-bottom: 10px;
       text-align: center;
+    }
+
+    .audio-player audio {
+      width: 100%;
     }
 
     /* Chat Widget */
@@ -360,7 +367,7 @@
       }
 
       .audio-player {
-        width: 300px;
+        width: 100%;
       }
 
       .chat-messages {
@@ -389,8 +396,6 @@
 
       .audio-player {
         width: 100%;
-        margin-left: auto;
-        margin-right: auto;
       }
 
       .chat-container {
