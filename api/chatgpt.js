@@ -1,9 +1,9 @@
 // api/chatgpt.js
 
-const { Configuration, OpenAIApi } = require('openai');
+import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY, // API Key stored in environment variables
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -40,17 +40,15 @@ Your role is to provide insightful and thoughtful answers about the album's them
 Participate in the Q&A session, engaging with questions about "Dreams of the Wounded Machine" and the role of AI in music and art.
 `;
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    res.status(405).json({ error: 'Method not allowed' });
-    return;
+    return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const { prompt } = req.body;
 
   if (!prompt) {
-    res.status(400).json({ error: 'Prompt is required' });
-    return;
+    return res.status(400).json({ error: 'Prompt is required' });
   }
 
   try {
@@ -68,9 +66,9 @@ module.exports = async (req, res) => {
     });
 
     const reply = completion.data.choices[0].message.content.trim();
-    res.status(200).json({ reply });
+    return res.status(200).json({ reply });
   } catch (error) {
     console.error('Error communicating with OpenAI:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error' });
   }
-};
+}
