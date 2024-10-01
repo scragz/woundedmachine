@@ -57,7 +57,12 @@ const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuesti
 const initialQuestion = `
 ${randomQuestion}
 
-Phrase your response in a soundbite that can be taken out of context. End by asking a followup question.
+**Instructions for the Response:**
+
+- Phrase your response as a provocative soundbite that could be taken out of context.
+- Keep it brief: three sentences or less.
+- End with a follow-up question that encourages the user to challenge their notions or ask further questions.
+- Your response should make the user think deeply or feel compelled to reply.
 `;
 
 export default async function handler(req, res) {
