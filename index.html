@@ -321,17 +321,15 @@
       background: var(--bright-cyan-4); /* Another Bright Cyan Variant */
     }
 
-    /* Starburst Image in Top Left */
+    /* Starburst Image as Footer */
     .starburst {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      width: 220px;
+      width: 100%;
       height: 120px;
       background-image: url('images/contains-ai.png');
-      background-size: cover;
+      background-size: contain;
       background-position: center;
-      z-index: 2;
+      background-repeat: no-repeat;
+      margin-top: 20px;
     }
 
     /* Responsive Design */
@@ -359,7 +357,6 @@
       }
 
       .starburst {
-        width: 180px;
         height: 100px;
       }
     }
@@ -398,11 +395,7 @@
       }
 
       .starburst {
-        width: 150px;
         height: 80px;
-        top: 0;
-        left: 0;
-        z-index: 3;
       }
     }
   </style>
@@ -423,9 +416,6 @@
     <div class="glitch-quote font3 align-right" style="--random-top: 0.9; --random-left: 0.1;">The currents pull us under; do you feel it?</div>
     <!-- Add more quotes as needed -->
   </div>
-
-  <!-- Starburst Image in Top Left -->
-  <div class="starburst"></div>
 
   <div class="container">
     <!-- Album Cover -->
@@ -454,6 +444,9 @@
         <!-- Removed the "Start Conversation" button -->
       </div>
     </div>
+
+    <!-- Starburst Image as Footer -->
+    <div class="starburst"></div>
   </div>
 
   <script>
