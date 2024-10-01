@@ -117,8 +117,8 @@
 
     /* Album Cover */
     .album-cover {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
       background-image: url('images/cover.png');
       background-size: cover;
       background-position: center;
@@ -331,18 +331,18 @@
       background-image: url('images/contains-ai.png');
       background-size: cover;
       background-position: center;
-      z-index: -2;
+      z-index: 2;
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
       .album-cover {
-        width: 250px;
-        height: 250px;
+        width: 300px;
+        height: 300px;
       }
 
       .audio-player {
-        width: 250px;
+        width: 300px;
       }
 
       .chat-messages {
@@ -366,12 +366,14 @@
 
     @media (max-width: 480px) {
       .album-cover {
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
       }
 
       .audio-player {
-        width: 200px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .chat-container {
@@ -398,6 +400,9 @@
       .starburst {
         width: 150px;
         height: 80px;
+        top: 0;
+        left: 0;
+        z-index: 3;
       }
     }
   </style>
