@@ -3,7 +3,7 @@ const systemPrompt = `
 You are an AI assistant specialized in generating creative and vivid image descriptions based on user prompts. Your task is to take the user's input and expand it into a detailed, imaginative description that can be used to generate an image. Focus on visual elements, colors, composition, and mood. Be creative and artistic in your descriptions.
 `;
 
-export async function handler(req, res) {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
