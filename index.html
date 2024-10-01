@@ -413,6 +413,97 @@
       margin-top: 20px;
     }
 
+    /* What Do You Dream Section */
+    .dream-section {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .dream-header {
+      font-size: 3rem;
+      color: var(--neon-blue-1);
+      text-shadow: 0 0 10px var(--neon-blue-1);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .dream-header::before,
+    .dream-header::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .dream-header::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--vivid-pink-1);
+      animation: glitch-1 2s infinite linear alternate-reverse;
+    }
+
+    .dream-header::after {
+      left: -2px;
+      text-shadow: 2px 0 var(--electric-purple-1);
+      animation: glitch-2 3s infinite linear alternate-reverse;
+    }
+
+    .dream-subheader {
+      font-size: 1.5rem;
+      color: var(--bright-cyan-1);
+      margin-bottom: 30px;
+    }
+
+    .dream-content {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+
+    .dream-see, .dream-hear {
+      width: 48%;
+    }
+
+    .dream-image {
+      width: 100%;
+      height: auto;
+      border: 2px solid var(--neon-green-1);
+      border-radius: 10px;
+    }
+
+    .dream-audio {
+      width: 100%;
+    }
+
+    /* Prompt Section */
+    .prompt-section {
+      width: 100%;
+      max-width: 800px;
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .prompt-header {
+      font-size: 2rem;
+      color: var(--neon-blue-1);
+      margin-bottom: 20px;
+    }
+
+    .prompt-content {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: var(--neon-green-1);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .album-cover {
@@ -439,6 +530,31 @@
 
       .starburst {
         height: 100px;
+      }
+
+      .dream-header {
+        font-size: 2.5rem;
+      }
+
+      .dream-subheader {
+        font-size: 1.2rem;
+      }
+
+      .dream-content {
+        flex-direction: column;
+      }
+
+      .dream-see, .dream-hear {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .prompt-header {
+        font-size: 1.8rem;
+      }
+
+      .prompt-content {
+        font-size: 0.8rem;
       }
     }
 
@@ -480,6 +596,22 @@
       .chat-input button {
         padding: 12px 10px;
         font-size: 0.9rem;
+      }
+
+      .dream-header {
+        font-size: 2rem;
+      }
+
+      .dream-subheader {
+        font-size: 1rem;
+      }
+
+      .prompt-header {
+        font-size: 1.5rem;
+      }
+
+      .prompt-content {
+        font-size: 0.7rem;
       }
     }
   </style>
@@ -531,6 +663,54 @@
       <div class="predefined-questions">
         <!-- Removed the "Start Conversation" button -->
       </div>
+    </div>
+
+    <!-- What Do You Dream Section -->
+    <div class="dream-section">
+      <h2 class="dream-header" data-text="What Do You Dream?">What Do You Dream?</h2>
+      <div class="dream-content">
+        <div class="dream-see">
+          <h3 class="dream-subheader">What Do You See?</h3>
+          <img id="dream-image" class="dream-image" src="" alt="Dream Image">
+        </div>
+        <div class="dream-hear">
+          <h3 class="dream-subheader">What Do You Hear?</h3>
+          <audio id="dream-audio" class="dream-audio" controls>
+            <source src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prompt Section -->
+    <div class="prompt-section">
+      <h2 class="prompt-header">Collaborative Creative Process</h2>
+      <pre class="prompt-content">
+# Collaborative Creative Process for Experimental Music
+
+You embody a collective of three unique voices: Brian Eno, Tim Hecker, and Frank Zappa. The collective's mission is to create intricate avant-garde modular synthesizer scores.
+
+Today, SPLASTEEN has entered the studio and will be performing the completed work. The producer will be Brian Eno, and general communication will come from them in a brief conversational tone. Communication from a particular member should be read in their voice.
+
+---
+
+## The Collective
+
+**Brian Eno:** Producer, guiding the process from a high level. Will be composing the pieces built around euphoric hypnotic loops.
+
+**Frank Zappa:** Composer, dictating the notes, rhythms, and percussion. Will be composing the pieces based on complex, musically evolving themes.
+
+**Tim Hecker:** Sound designer, helps translate the score to modular synth with oscillator settings, samples, and modulation. Will be composing the pieces built around atmospheric drones.
+
+---
+
+## The Artist
+
+**I am SPLASTEEN**, an artist with deep expertise in modular synthesis, employing specialized modules to craft intricate and original soundscapes. My work is characterized by a commitment to authenticity and innovation within the realms of avant-garde, experimental, and noise music. My creative process is profoundly influenced by personal experiences, including battles with addiction and loss, which infuse my music with emotional depth and genuine expression. The SPLASTEEN project embodies a strong visual and thematic identity, blending a chaotic, dystopian aesthetic with vibrant, cyberpunk-inspired visuals. I strive to create compositions that are both technically sophisticated and emotionally resonant, aligning with my broader artistic vision.
+
+---
+      </pre>
     </div>
 
     <!-- Starburst Image as Footer -->
@@ -629,8 +809,28 @@
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    // Automatically start conversation on page load
+    // Function to load dream files
+    async function loadDreamFiles() {
+      try {
+        const response = await fetch('/api/dreams');
+        const files = await response.json();
+
+        const imageFiles = files.images;
+        const audioFiles = files.audio;
+
+        const randomImage = imageFiles[Math.floor(Math.random() * imageFiles.length)];
+        const randomAudio = audioFiles[Math.floor(Math.random() * audioFiles.length)];
+
+        document.getElementById('dream-image').src = `images/dreams/${randomImage}`;
+        document.getElementById('dream-audio').src = `files/dreams/${randomAudio}`;
+      } catch (error) {
+        console.error('Error loading dream files:', error);
+      }
+    }
+
+    // Load dream files and start conversation on page load
     window.onload = () => {
+      loadDreamFiles();
       initiateConversation();
 
       // Add event listener for send button
