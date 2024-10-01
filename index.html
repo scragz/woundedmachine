@@ -677,6 +677,9 @@
       margin-top: 50px;
       position: relative;
       overflow: hidden;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .liner-notes::before {
@@ -731,9 +734,9 @@
     }
 
     .liner-notes-content {
-      font-family: 'Courier New', monospace;
+      font-family: 'Arial', sans-serif;
       font-size: 1rem;
-      color: var(--neon-green-1);
+      color: var(--bright-cyan-1);
       line-height: 1.6;
       position: relative;
       z-index: 1;
@@ -741,12 +744,29 @@
 
     .liner-notes-content p {
       margin-bottom: 20px;
-      transition: all 0.3s ease;
     }
 
-    .liner-notes-content p:hover {
-      transform: scale(1.05);
-      color: var(--bright-cyan-1);
+    .liner-notes-content blockquote {
+      background: rgba(0, 0, 0, 0.5);
+      border-left: 4px solid var(--vivid-pink-1);
+      margin: 1.5em 10px;
+      padding: 0.5em 10px;
+      quotes: "\201C""\201D""\2018""\2019";
+      font-style: italic;
+      color: var(--neon-blue-1);
+    }
+
+    .liner-notes-content blockquote:before {
+      color: var(--vivid-pink-1);
+      content: open-quote;
+      font-size: 4em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
+    }
+
+    .liner-notes-content blockquote p {
+      display: inline;
     }
 
     /* Starburst Image as Footer */
@@ -806,6 +826,10 @@
 
       .prompt-content {
         font-size: 0.8rem;
+      }
+
+      .liner-notes {
+        padding: 20px;
       }
 
       .liner-notes-header {
@@ -871,6 +895,10 @@
 
       .prompt-content {
         font-size: 0.7rem;
+      }
+
+      .liner-notes {
+        padding: 15px;
       }
 
       .liner-notes-header {
