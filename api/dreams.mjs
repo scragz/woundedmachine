@@ -21,7 +21,7 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error('Error reading dream files:', error);
-    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+    return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' }
     });
