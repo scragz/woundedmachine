@@ -191,37 +191,6 @@
       overflow: hidden;
     }
 
-    .album-cover::before,
-    .album-cover::after,
-    .album-cover .rgb-layer {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: inherit;
-      background-size: inherit;
-      background-position: inherit;
-    }
-
-    .album-cover::before {
-      left: -2px;
-      background-color: rgba(255, 0, 0, 0.3);
-      mix-blend-mode: screen;
-    }
-
-    .album-cover::after {
-      left: 2px;
-      background-color: rgba(0, 0, 255, 0.3);
-      mix-blend-mode: screen;
-    }
-
-    .album-cover .rgb-layer {
-      background-color: rgba(0, 255, 0, 0.3);
-      mix-blend-mode: screen;
-    }
-
     /* Audio Player */
     .audio-player {
       margin-bottom: 40px;
@@ -275,6 +244,7 @@
       border-radius: 15px;
       color: var(--vivid-pink-3);
       box-shadow: 0 0 20px var(--electric-purple-1);
+      margin-bottom: 50px;
     }
 
     .chat-header {
@@ -550,37 +520,6 @@
       overflow: hidden;
     }
 
-    .dream-image::before,
-    .dream-image::after,
-    .dream-image .rgb-layer {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: inherit;
-      background-size: inherit;
-      background-position: inherit;
-    }
-
-    .dream-image::before {
-      left: -2px;
-      background-color: rgba(255, 0, 0, 0.3);
-      mix-blend-mode: screen;
-    }
-
-    .dream-image::after {
-      left: 2px;
-      background-color: rgba(0, 0, 255, 0.3);
-      mix-blend-mode: screen;
-    }
-
-    .dream-image .rgb-layer {
-      background-color: rgba(0, 255, 0, 0.3);
-      mix-blend-mode: screen;
-    }
-
     .dream-see,
     .dream-hear {
       width: 100%;
@@ -752,6 +691,7 @@
       width: 100%;
       margin-left: auto;
       margin-right: auto;
+      margin-bottom: 50px;
     }
 
     .liner-notes-section::before {
@@ -839,6 +779,50 @@
 
     .liner-notes-content blockquote p {
       display: inline;
+    }
+
+    /* Track Overview */
+    .track-overview {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid var(--neon-green-1);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 50px;
+      position: relative;
+      max-width: 800px;
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .track-overview h3 {
+      font-size: 2rem;
+      color: var(--neon-green-1);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .track-overview ol {
+      padding-left: 20px;
+    }
+
+    .track-overview li {
+      margin-bottom: 15px;
+      color: var(--bright-cyan-1);
+    }
+
+    .track-overview strong {
+      color: var(--vivid-pink-1);
+    }
+
+    .track-overview ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .track-overview ul li {
+      margin-bottom: 5px;
+      color: var(--neon-blue-1);
     }
 
     /* Starburst Image as Footer */
