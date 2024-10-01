@@ -7,18 +7,16 @@ export async function GET(request) {
     const imageDir = path.join(process.cwd(), 'public', 'images', 'dreams');
     const audioDir = path.join(process.cwd(), 'public', 'files', 'dreams');
 
-    // Log the current working directory and its contents for debugging
-    console.log('Current working directory:', process.cwd());
+    let debugInfo = `Current working directory: ${process.cwd()}\n`;
     try {
       const cwdContents = await fs.readdir(process.cwd());
-      console.log('Contents of current working directory:', cwdContents);
+      debugInfo += `Contents of current working directory: ${JSON.stringify(cwdContents)}\n`;
     } catch (error) {
-      console.error('Error reading current working directory:', error);
+      debugInfo += `Error reading current working directory: ${error}\n`;
     }
 
-    // Log the directories for debugging
-    console.log('Image directory:', imageDir);
-    console.log('Audio directory:', audioDir);
+    debugInfo += `Image directory: ${imageDir}\n`;
+    debugInfo += `Audio directory: ${audioDir}\n`;
 
     // Check if directories exist
     const [imageExists, audioExists] = await Promise.all([
@@ -27,7 +25,7 @@ export async function GET(request) {
     ]);
 
     if (!imageExists || !audioExists) {
-      throw new Error(`Directories not found. Image dir exists: ${imageExists}, Audio dir exists: ${audioExists}`);
+      throw new Error(`Directories not found. Image dir exists: ${imageExists}, Audio dir exists: ${audioExists}\nDebug info: ${debugInfo}`);
     }
 
     const [imageFiles, audioFiles] = await Promise.all([
