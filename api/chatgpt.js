@@ -65,10 +65,14 @@ export default async function handler(req, res) {
       presence_penalty: 0,
     });
 
+    if (!completion.data || !completion.data.choices || completion.data.choices.length === 0) {
+      throw new Error('Invalid response from OpenAI');
+    }
+
     const reply = completion.data.choices[0].message.content.trim();
     return res.status(200).json({ reply });
   } catch (error) {
     console.error('Error communicating with OpenAI:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Error processing your request', details: error.message });
   }
 }
