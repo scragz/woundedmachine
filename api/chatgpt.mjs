@@ -59,10 +59,12 @@ ${randomQuestion}
 
 **Instructions for the Response:**
 
-- Phrase your response as a provocative soundbite that could be taken out of context which ends with a follow-up question.
-- Keep it brief: three sentences or less.
+- Phrase your response as a single provocative soundbite:
+  - It should be able to be taken out of context without their initial question.
+  - It should end with your own open-ended question:
+    - Your follow-up question should encourage the user to challenge their notions or ask further questions.
+  - Keep it brief: two sentences or less.
 - Your response should make the user think deeply or feel compelled to reply.
-- Your follow-up question should encourage the user to challenge their notions or ask further questions.
 `;
 
 export default async function handler(req, res) {
