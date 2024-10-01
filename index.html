@@ -176,8 +176,9 @@
 
     /* Album Cover */
     .album-cover {
-      width: 400px;
-      height: 400px;
+      width: 100%;
+      max-width: 700px;
+      aspect-ratio: 1 / 1;
       background-image: url('images/cover.png');
       background-size: cover;
       background-position: center;
@@ -784,8 +785,7 @@
     /* Responsive Design */
     @media (max-width: 768px) {
       .album-cover {
-        width: 300px;
-        height: 300px;
+        max-width: 90%;
       }
 
       .audio-player {
@@ -844,8 +844,7 @@
 
     @media (max-width: 480px) {
       .album-cover {
-        width: 250px;
-        height: 250px;
+        max-width: 95%;
       }
 
       .audio-player {
