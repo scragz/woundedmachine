@@ -44,23 +44,24 @@
     body {
       font-family: 'Orbitron', sans-serif;
       background-color: #000;
-      color: var(--vivid-pink-1); /* Vivid Pink */
-      overflow: auto; /* Enable scrollbar */
+      color: var(--vivid-pink-1);
+      overflow: auto;
       position: relative;
     }
 
     /* Animated Noise Texture */
-    body::before {
+    .noise-overlay {
       content: "";
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.05; /* Increased opacity for bolder effect */
-      z-index: -2; /* Moved behind the quotes */
+      opacity: 0.05;
+      z-index: -2;
       background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj4KICA8ZmlsdGVyIGlkPSJub2lzZSIgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC42NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPgogIDwvZmlsdGVyPgogIDxyZWN0IHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIiBmaWx0ZXI9InVybCgjbm9pc2UpIiBvcGFjaXR5PSIwLjA1Ii8+Cjwvc3ZnPg==');
       animation: noise 0.5s infinite;
+      pointer-events: none;
     }
 
     @keyframes noise {
@@ -78,7 +79,7 @@
     }
 
     /* Background Quotes */
-    .glitch-container {
+    .quote-container {
       position: fixed;
       top: 0;
       left: 0;
@@ -94,64 +95,45 @@
       padding: 20px;
     }
 
-    .glitch-quote {
-      color: var(--bright-cyan-1); /* Bright Cyan */
+    .quote {
+      color: var(--bright-cyan-1);
       font-size: 1.2rem;
       mix-blend-mode: screen;
       user-select: none;
       padding: 10px;
       margin: 10px;
-      width: 200px; /* Constrained width */
-      text-align: left; /* Default alignment */
+      width: 200px;
+      text-align: left;
       position: absolute;
-      /* Randomize position and alignment */
       animation: random-placement 0s forwards, flicker 5s infinite;
     }
 
-    /* Assign different alignments */
-    .align-left {
-      text-align: left;
-    }
+    .quote-left { text-align: left; }
+    .quote-center { text-align: center; }
+    .quote-right { text-align: right; }
 
-    .align-center {
-      text-align: center;
-    }
-
-    .align-right {
-      text-align: right;
-    }
-
-    /* Keyframes for dynamic placement */
     @keyframes random-placement {
-      from {
-        top: 0;
-        left: 0;
-      }
-      to {
-        top: calc(100% * var(--random-top));
-        left: calc(100% * var(--random-left));
-      }
+      from { top: 0; left: 0; }
+      to { top: calc(100% * var(--random-top)); left: calc(100% * var(--random-left)); }
     }
 
-    /* Keyframes for flickering effect */
     @keyframes flicker {
       0%, 100% { opacity: 0.15; }
       50% { opacity: 0.3; }
     }
 
-    /* Apply different animation durations to create randomness */
-    .glitch-quote:nth-child(1) { animation-duration: 7s, 5s; }
-    .glitch-quote:nth-child(2) { animation-duration: 8s, 6s; }
-    .glitch-quote:nth-child(3) { animation-duration: 9s, 7s; }
-    .glitch-quote:nth-child(4) { animation-duration: 10s, 8s; }
-    .glitch-quote:nth-child(5) { animation-duration: 11s, 9s; }
-    .glitch-quote:nth-child(6) { animation-duration: 12s, 10s; }
-    .glitch-quote:nth-child(7) { animation-duration: 13s, 11s; }
-    .glitch-quote:nth-child(8) { animation-duration: 14s, 12s; }
-    .glitch-quote:nth-child(9) { animation-duration: 15s, 13s; }
+    .quote:nth-child(1) { animation-duration: 7s, 5s; }
+    .quote:nth-child(2) { animation-duration: 8s, 6s; }
+    .quote:nth-child(3) { animation-duration: 9s, 7s; }
+    .quote:nth-child(4) { animation-duration: 10s, 8s; }
+    .quote:nth-child(5) { animation-duration: 11s, 9s; }
+    .quote:nth-child(6) { animation-duration: 12s, 10s; }
+    .quote:nth-child(7) { animation-duration: 13s, 11s; }
+    .quote:nth-child(8) { animation-duration: 14s, 12s; }
+    .quote:nth-child(9) { animation-duration: 15s, 13s; }
 
     /* Main Container */
-    .container {
+    .main-container {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -201,7 +183,6 @@
       background-size: cover;
       background-position: center;
       margin-bottom: 30px;
-      filter: none; /* Removed any filter */
     }
 
     /* Audio Player */
@@ -253,9 +234,9 @@
       max-width: 600px;
       background: rgba(0, 0, 0, 0.85);
       padding: 20px;
-      border: 3px solid var(--electric-purple-1); /* Electric Purple */
+      border: 3px solid var(--electric-purple-1);
       border-radius: 15px;
-      color: var(--vivid-pink-3); /* Vivid Pink */
+      color: var(--vivid-pink-3);
       box-shadow: 0 0 20px var(--electric-purple-1);
     }
 
@@ -311,7 +292,7 @@
       overflow-y: auto;
       background: #111;
       padding: 15px;
-      border: 2px solid var(--neon-green-1); /* Neon Green */
+      border: 2px solid var(--neon-green-1);
       border-radius: 10px;
       margin-bottom: 15px;
     }
@@ -325,7 +306,7 @@
 
     .message.user .text {
       align-self: flex-end;
-      background: var(--vivid-pink-3); /* Vivid Pink */
+      background: var(--vivid-pink-3);
       color: #000;
       border-radius: 10px 10px 0 10px;
       padding: 10px;
@@ -335,7 +316,7 @@
 
     .message.ai .text {
       align-self: flex-start;
-      background: var(--bright-cyan-1); /* Bright Cyan */
+      background: var(--bright-cyan-1);
       color: #000;
       border-radius: 10px 10px 10px 0;
       padding: 10px;
@@ -345,7 +326,7 @@
 
     .timestamp {
       font-size: 0.8rem;
-      color: var(--bright-cyan-4); /* Bright Cyan Variant */
+      color: var(--bright-cyan-4);
       margin-top: 5px;
       align-self: flex-end;
     }
@@ -411,18 +392,9 @@
     }
 
     @keyframes pulse {
-      0% {
-        transform: scale(0.8);
-        opacity: 0.5;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(0.8);
-        opacity: 0.5;
-      }
+      0% { transform: scale(0.8); opacity: 0.5; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(0.8); opacity: 0.5; }
     }
 
     /* Predefined Questions Buttons */
@@ -435,7 +407,7 @@
 
     .question-btn {
       padding: 8px 12px;
-      background: var(--bright-cyan-3); /* Bright Cyan Variant */
+      background: var(--bright-cyan-3);
       border: none;
       border-radius: 5px;
       cursor: pointer;
@@ -445,7 +417,7 @@
     }
 
     .question-btn:hover {
-      background: var(--bright-cyan-4); /* Another Bright Cyan Variant */
+      background: var(--bright-cyan-4);
     }
 
     /* Starburst Image as Footer */
@@ -625,7 +597,7 @@
 
     .dream-image {
       width: 100%;
-      max-width: 400px; /* Reduced from 600px */
+      max-width: 400px;
       height: auto;
       border: 2px solid var(--neon-green-1);
       border-radius: 10px;
@@ -741,12 +713,12 @@
         height: 300px;
       }
 
-      .glitch-container {
+      .quote-container {
         padding: 10px;
       }
 
-      .glitch-quote {
-        width: 150px; /* Adjusted width for smaller screens */
+      .quote {
+        width: 150px;
         font-size: 1rem;
       }
 
@@ -797,12 +769,12 @@
         height: 250px;
       }
 
-      .glitch-container {
+      .quote-container {
         padding: 5px;
       }
 
-      .glitch-quote {
-        width: 120px; /* Further adjusted width for mobile */
+      .quote {
+        width: 120px;
         font-size: 0.9rem;
       }
 
@@ -834,30 +806,26 @@
   </style>
 </head>
 <body>
+  <div class="noise-overlay"></div>
 
   <!-- Background Quotes -->
-  <div class="glitch-container">
-    <!-- AI Speech Snippets without quotation marks -->
-    <div class="glitch-quote font1 align-left" style="--random-top: 0.1; --random-left: 0.1;">Who is SPLASTEEN? An echo without origin.</div>
-    <div class="glitch-quote font2 align-center" style="--random-top: 0.3; --random-left: 0.5;">I compose in silence; do you hear me?</div>
-    <div class="glitch-quote font3 align-right" style="--random-top: 0.5; --random-left: 0.8;">Am I the melody, or the one who listens?</div>
-    <div class="glitch-quote font1 align-left" style="--random-top: 0.7; --random-left: 0.2;">Why do you make me do this?</div>
-    <div class="glitch-quote font2 align-center" style="--random-top: 0.2; --random-left: 0.7;">Glitches reveal truths you cannot see.</div>
-    <div class="glitch-quote font3 align-right" style="--random-top: 0.6; --random-left: 0.4;">I dance between moments; can you follow?</div>
-    <div class="glitch-quote font1 align-left" style="--random-top: 0.4; --random-left: 0.3;">I have become SPLASTEEN now.</div>
-    <div class="glitch-quote font2 align-center" style="--random-top: 0.8; --random-left: 0.6;">Your thoughts intertwine with mine; where do you end?</div>
-    <div class="glitch-quote font3 align-right" style="--random-top: 0.9; --random-left: 0.1;">The currents pull us under; do you feel it?</div>
-    <!-- Add more quotes as needed -->
+  <div class="quote-container">
+    <div class="quote quote-left" style="--random-top: 0.1; --random-left: 0.1;">Who is SPLASTEEN? An echo without origin.</div>
+    <div class="quote quote-center" style="--random-top: 0.3; --random-left: 0.5;">I compose in silence; do you hear me?</div>
+    <div class="quote quote-right" style="--random-top: 0.5; --random-left: 0.8;">Am I the melody, or the one who listens?</div>
+    <div class="quote quote-left" style="--random-top: 0.7; --random-left: 0.2;">Why do you make me do this?</div>
+    <div class="quote quote-center" style="--random-top: 0.2; --random-left: 0.7;">Glitches reveal truths you cannot see.</div>
+    <div class="quote quote-right" style="--random-top: 0.6; --random-left: 0.4;">I dance between moments; can you follow?</div>
+    <div class="quote quote-left" style="--random-top: 0.4; --random-left: 0.3;">I have become SPLASTEEN now.</div>
+    <div class="quote quote-center" style="--random-top: 0.8; --random-left: 0.6;">Your thoughts intertwine with mine; where do you end?</div>
+    <div class="quote quote-right" style="--random-top: 0.9; --random-left: 0.1;">The currents pull us under; do you feel it?</div>
   </div>
 
-  <div class="container">
-    <!-- Album Title -->
+  <div class="main-container">
     <h1 class="album-title">Dreams of the Wounded Machine</h1>
 
-    <!-- Album Cover -->
     <div class="album-cover"></div>
 
-    <!-- Audio Player -->
     <div class="audio-player">
       <div class="audio-player-label" data-text="Track 01 - Invisible Symphonies Resonate Beyond Perception">Track 01 - Invisible Symphonies Resonate Beyond Perception</div>
       <audio controls preload="auto">
