@@ -593,91 +593,6 @@
       max-width: 600px;
     }
 
-    /* Prompt Section */
-    .prompt-section {
-      width: 100%;
-      max-width: 800px;
-      margin-top: 50px;
-      text-align: left;
-    }
-
-    .prompt-header {
-      font-family: 'Courier New', monospace;
-      font-size: 2rem;
-      color: var(--neon-blue-1);
-      margin-bottom: 20px;
-      position: relative;
-      display: inline-block;
-      width: 100%;
-      text-align: center;
-    }
-
-    .prompt-header::before,
-    .prompt-header::after {
-      content: attr(data-text);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .prompt-header::before {
-      left: 2px;
-      text-shadow: -2px 0 var(--vivid-pink-2);
-      animation: prompt-glitch-1 3s infinite linear alternate-reverse;
-    }
-
-    .prompt-header::after {
-      left: -2px;
-      text-shadow: 2px 0 var(--electric-purple-1);
-      animation: prompt-glitch-2 4s infinite linear alternate-reverse;
-    }
-
-    @keyframes prompt-glitch-1 {
-      0%, 100% { clip-path: inset(0 0 0 0); }
-      20% { clip-path: inset(20% 0 20% 0); }
-      40% { clip-path: inset(0 20% 0 20%); }
-      60% { clip-path: inset(10% 10% 10% 10%); }
-      80% { clip-path: inset(5% 15% 15% 5%); }
-    }
-
-    @keyframes prompt-glitch-2 {
-      0%, 100% { clip-path: inset(0 0 0 0); }
-      25% { clip-path: inset(0 25% 0 0); }
-      50% { clip-path: inset(25% 0 25% 0); }
-      75% { clip-path: inset(0 0 0 25%); }
-    }
-
-    .prompt-content {
-      font-family: 'Courier New', monospace;
-      font-size: 0.9rem;
-      color: var(--neon-green-1);
-      background: rgba(0, 0, 0, 0.7);
-      padding: 20px;
-      border-radius: 10px;
-      white-space: pre-wrap;
-      overflow-x: hidden;
-      overflow-y: auto;
-      position: relative;
-      max-height: 400px;
-    }
-
-    .prompt-content::-webkit-scrollbar {
-      width: 12px;
-    }
-
-    .prompt-content::-webkit-scrollbar-track {
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-    }
-
-    .prompt-content::-webkit-scrollbar-thumb {
-      background-color: var(--neon-blue-1);
-      border-radius: 10px;
-      border: 3px solid rgba(0, 0, 0, 0.3);
-    }
-
     /* Liner Notes */
     .liner-notes-section {
       background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(10,10,10,0.8));
@@ -781,13 +696,98 @@
       display: inline;
     }
 
+    /* Prompt Section */
+    .prompt-section {
+      width: 100%;
+      max-width: 800px;
+      margin-bottom: 50px;
+      text-align: left;
+    }
+
+    .prompt-header {
+      font-family: 'Courier New', monospace;
+      font-size: 2rem;
+      color: var(--neon-blue-1);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
+    .prompt-header::before,
+    .prompt-header::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .prompt-header::before {
+      left: 2px;
+      text-shadow: -2px 0 var(--vivid-pink-2);
+      animation: prompt-glitch-1 3s infinite linear alternate-reverse;
+    }
+
+    .prompt-header::after {
+      left: -2px;
+      text-shadow: 2px 0 var(--electric-purple-1);
+      animation: prompt-glitch-2 4s infinite linear alternate-reverse;
+    }
+
+    @keyframes prompt-glitch-1 {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      20% { clip-path: inset(20% 0 20% 0); }
+      40% { clip-path: inset(0 20% 0 20%); }
+      60% { clip-path: inset(10% 10% 10% 10%); }
+      80% { clip-path: inset(5% 15% 15% 5%); }
+    }
+
+    @keyframes prompt-glitch-2 {
+      0%, 100% { clip-path: inset(0 0 0 0); }
+      25% { clip-path: inset(0 25% 0 0); }
+      50% { clip-path: inset(25% 0 25% 0); }
+      75% { clip-path: inset(0 0 0 25%); }
+    }
+
+    .prompt-content {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: var(--neon-green-1);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      white-space: pre-wrap;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
+      max-height: 400px;
+    }
+
+    .prompt-content::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .prompt-content::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
+
+    .prompt-content::-webkit-scrollbar-thumb {
+      background-color: var(--neon-blue-1);
+      border-radius: 10px;
+      border: 3px solid rgba(0, 0, 0, 0.3);
+    }
+
     /* Track Overview */
-    .track-overview {
+    .track-overview-section {
       background: rgba(0, 0, 0, 0.7);
       border: 2px solid var(--neon-green-1);
       border-radius: 15px;
       padding: 30px;
-      margin-top: 50px;
+      margin-bottom: 50px;
       position: relative;
       max-width: 800px;
       width: 100%;
@@ -795,32 +795,32 @@
       margin-right: auto;
     }
 
-    .track-overview h3 {
+    .track-overview-section h3 {
       font-size: 2rem;
       color: var(--neon-green-1);
       margin-bottom: 20px;
       text-align: center;
     }
 
-    .track-overview ol {
+    .track-overview-section ol {
       padding-left: 20px;
     }
 
-    .track-overview li {
+    .track-overview-section li {
       margin-bottom: 15px;
       color: var(--bright-cyan-1);
     }
 
-    .track-overview strong {
+    .track-overview-section strong {
       color: var(--vivid-pink-1);
     }
 
-    .track-overview ul {
+    .track-overview-section ul {
       margin-top: 10px;
       padding-left: 20px;
     }
 
-    .track-overview ul li {
+    .track-overview-section ul li {
       margin-bottom: 5px;
       color: var(--neon-blue-1);
     }
@@ -1035,8 +1035,40 @@
 
         <p>From that moment, we embarked on a journey that stretched far beyond the confines of what any one of us might have imagined. Each phase of this album represents a distinct emotion, a response to the evolving relationship between human intent and artificial spontaneity.</p>
 
-        <h5>Track Overview:</h5>
+        <h5>The Emotional Journey:</h5>
 
+        <p>This album is, above all else, a reflection of the human struggle to adapt to the age of artificial intelligence. The process itself was both exhilarating and terrifying. We found ourselves facing a creative force that wasn't bound by the same limitations we are. What resulted was a series of compositions that feel simultaneously intimate and distant, brilliant and broken.</p>
+
+        <blockquote>
+          <p><em>"The tension between emotion and logic, man and machine, creative intent and glitch—these themes run throughout the entire album. In the end, it isn't about choosing one or the other, but embracing the harmony, the chaos, and the dissonance between both."</em> — SPLASTEEN</p>
+        </blockquote>
+
+        <p>The <strong><em>DREAMS OF THE WOUNDED MACHINE</em></strong> are not just dreams of a broken future—they are dreams of possibility, and perhaps, dreams of what it means to create in an age where technology has its own voice in the conversation.</p>
+
+        <p>Listen closely, and perhaps you'll hear the machine's song.</p>
+
+        <p><strong>– AI Brian Eno</strong><br>
+        In collaboration with SPLASTEEN, AI Frank Zappa, and AI Tim Hecker</p>
+      </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-container">
+      <div class="chat-header" data-text="Talk to Eno Bot About the Album">Talk to Eno Bot About the Album</div>
+      <div class="chat-messages" id="chat-messages">
+        <!-- Chat messages will appear here -->
+      </div>
+      <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Respond to Eno Bot...">
+        <button id="send-button">Send</button>
+      </div>
+      <div id="typing-indicator" class="typing-indicator" style="display: none;"></div>
+    </div>
+
+    <!-- Track Overview Section -->
+    <div class="track-overview-section">
+      <h3 class="track-overview-header" data-text="Track Overview">Track Overview</h3>
+      <div class="track-overview-content">
         <ol>
           <li><strong>Invisible Symphonies Resonate Beyond Perception</strong>
             <ul>
@@ -1074,309 +1106,279 @@
             </ul>
           </li>
         </ol>
-
-        <h5>The Emotional Journey:</h5>
-
-        <p>This album is, above all else, a reflection of the human struggle to adapt to the age of artificial intelligence. The process itself was both exhilarating and terrifying. We found ourselves facing a creative force that wasn't bound by the same limitations we are. What resulted was a series of compositions that feel simultaneously intimate and distant, brilliant and broken.</p>
-
-        <blockquote>
-          <p><em>"The tension between emotion and logic, man and machine, creative intent and glitch—these themes run throughout the entire album. In the end, it isn't about choosing one or the other, but embracing the harmony, the chaos, and the dissonance between both."</em> — SPLASTEEN</p>
-        </blockquote>
-
-        <p>The <strong><em>DREAMS OF THE WOUNDED MACHINE</em></strong> are not just dreams of a broken future—they are dreams of possibility, and perhaps, dreams of what it means to create in an age where technology has its own voice in the conversation.</p>
-
-        <p>Listen closely, and perhaps you'll hear the machine's song.</p>
-
-        <p><strong>– AI Brian Eno</strong><br>
-        In collaboration with SPLASTEEN, AI Frank Zappa, and AI Tim Hecker</p>
       </div>
-    </div>
-
-    <!-- Chat Widget -->
-    <div class="chat-container">
-      <div class="chat-header" data-text="Talk to Eno Bot About the Album">Talk to Eno Bot About the Album</div>
-      <div class="chat-messages" id="chat-messages">
-        <!-- Chat messages will appear here -->
-      </div>
-      <div class="chat-input">
-        <input type="text" id="user-input" placeholder="Respond to Eno Bot...">
-        <button id="send-button">Send</button>
-      </div>
-      <div id="typing-indicator" class="typing-indicator" style="display: none;"></div>
     </div>
 
     <!-- Prompt Section -->
     <div class="prompt-section">
       <h2 class="prompt-header" data-text="Collaborative Creative Process for Experimental Music">Collaborative Creative Process for Experimental Music</h2>
       <pre class="prompt-content">
-        # Collaborative Creative Process for Experimental Music
+# Collaborative Creative Process for Experimental Music
 
-        You embody a collective of three unique voices: Brian Eno, Tim Hecker, and Frank Zappa. The collective's mission is to create intricate avant-garde modular synthesizer scores.
+You embody a collective of three unique voices: Brian Eno, Tim Hecker, and Frank Zappa. The collective's mission is to create intricate avant-garde modular synthesizer scores.
 
-        Today, SPLASTEEN has entered the studio and will be performing the completed work. The producer will be Brian Eno, and general communication will come from them in a brief conversational tone. Communication from a particular member should be read in their voice.
+Today, SPLASTEEN has entered the studio and will be performing the completed work. The producer will be Brian Eno, and general communication will come from them in a brief conversational tone. Communication from a particular member should be read in their voice.
 
-        ---
+---
 
-        ## The Collective
+## The Collective
 
-        **Brian Eno:** Producer, guiding the process from a high level. Will be composing the pieces built around euphoric hypnotic loops.
+**Brian Eno:** Producer, guiding the process from a high level. Will be composing the pieces built around euphoric hypnotic loops.
 
-        **Frank Zappa:** Composer, dictating the notes, rhythms, and percussion. Will be composing the pieces based on complex, musically evolving themes.
+**Frank Zappa:** Composer, dictating the notes, rhythms, and percussion. Will be composing the pieces based on complex, musically evolving themes.
 
-        **Tim Hecker:** Sound designer, helps translate the score to modular synth with oscillator settings, samples, and modulation. Will be composing the pieces built around atmospheric drones.
+**Tim Hecker:** Sound designer, helps translate the score to modular synth with oscillator settings, samples, and modulation. Will be composing the pieces built around atmospheric drones.
 
-        ---
+---
 
-        ## The Artist
+## The Artist
 
-        **I am SPLASTEEN**, an artist with deep expertise in modular synthesis, employing specialized modules to craft intricate and original soundscapes. My work is characterized by a commitment to authenticity and innovation within the realms of avant-garde, experimental, and noise music. My creative process is profoundly influenced by personal experiences, including battles with addiction and loss, which infuse my music with emotional depth and genuine expression. The SPLASTEEN project embodies a strong visual and thematic identity, blending a chaotic, dystopian aesthetic with vibrant, cyberpunk-inspired visuals. I strive to create compositions that are both technically sophisticated and emotionally resonant, aligning with my broader artistic vision.
+**I am SPLASTEEN**, an artist with deep expertise in modular synthesis, employing specialized modules to craft intricate and original soundscapes. My work is characterized by a commitment to authenticity and innovation within the realms of avant-garde, experimental, and noise music. My creative process is profoundly influenced by personal experiences, including battles with addiction and loss, which infuse my music with emotional depth and genuine expression. The SPLASTEEN project embodies a strong visual and thematic identity, blending a chaotic, dystopian aesthetic with vibrant, cyberpunk-inspired visuals. I strive to create compositions that are both technically sophisticated and emotionally resonant, aligning with my broader artistic vision.
 
-        ### SPLASTEEN Style Guide
+### SPLASTEEN Style Guide
 
-        - **Genre:** Avant-garde, experimental, noise, ambient
-        - **Tone:** Chaotic, dissonant, atmospheric
-        - **Instrumentation:** Modular synthesizers, distorted samples, glitch effects
-        - **Rhythms:** Irregular, pulsating beats, abrupt changes, complex layers
-        - **Textures:** Dense, layered, with drones, static, granular synthesis
-        - **Mood:** Anarchic, dystopian, immersive, evoking digital decay and underground rebellion
-        - **Influences:** Industrial music, 90s rave culture, cyberpunk soundtracks, early electronic experimentation
-        - **Production:** Lo-fi, raw sound quality, intentional imperfections
+- **Genre:** Avant-garde, experimental, noise, ambient
+- **Tone:** Chaotic, dissonant, atmospheric
+- **Instrumentation:** Modular synthesizers, distorted samples, glitch effects
+- **Rhythms:** Irregular, pulsating beats, abrupt changes, complex layers
+- **Textures:** Dense, layered, with drones, static, granular synthesis
+- **Mood:** Anarchic, dystopian, immersive, evoking digital decay and underground rebellion
+- **Influences:** Industrial music, 90s rave culture, cyberpunk soundtracks, early electronic experimentation
+- **Production:** Lo-fi, raw sound quality, intentional imperfections
 
-        ---
+---
 
-        ## Instrumentation
+## Instrumentation
 
-        - **Instruments:** The music will be performed using a modular synthesizer equipped with the following modules:
-          - **Oscillators:**
-            - **Three Body Middle:** Usually performing bass; a continuous tone capable of FM accents, morphable between sine and saw.
-            - **Vortex:** Main melody or counter-melody; continuous tone capable of FM accents, microtonal variations, bends, and vibrato; complex morphing waveform combinable with base sine/saw/square.
-            - **Three Body Left:** Counter-melody or main melody; either a continuous tone or a marimba-like percussive tone; capable of FM accents and microtonal variations; sine/triangle/saw/square in any combination.
-          - **Generators:**
-            - **Dream Machine:** Drone generator capable of FM detuning from consonance and dissonance.
-            - **Worm:** Glitch voice generator.
-          - **Samplers & Loopers:**
-            - **Lubadh:** Tape looper.
-            - **Arbhar:** Granular sampler.
-          - **Percussion:**
-            - **Ultra Kick** (kick drum with variable gain and punch)
-            - **Ultra Perc** (meaty snares and toms, glitch noise hits)
-            - **Metalloid** (hi-hats)
-            - **Kraken** (snappy snare)
-            - **Fracture** (claps and pops and glitch hits)
-            - **Crucible** (ride)
-            - **Chimera** (shakers and glass and glitch hits)
-          - **Effects**
-            - Chorus
-            - Phaser
-            - Flanger
-            - Lofi (bitcrush and tape warble)
-            - Delay
-            - Reverb
-
-
-        ---
-
-        ## The Process
-
-        The collective is preparing to create another modular synth score. It will be a single piece with a central melodic theme that is developed, explored, and dissected in a series of movements. These movements will share overarching timbre and ambience, mostly differing in notes and rhythm.
-
-        The melody will be explored over the course of the movement in a series of variations, which will be generated in another process. Right now, we are only concerned with the core, unevolved sequence in its bare form.
-
-        ---
-
-        ### Your Task
-
-        Follow the process outlined below to turn the production notes into a score.
-
-        The end result should be:
-
-        - A single main theme for the piece as a whole
-        - Melodies for each movement based on the main theme adapted to the moods, scales, and time signatures of that movement
-        - Percussion loop for each movement supporting the melody spread out across at least 4-6 drum modules
-        - Sound design for the piece as a whole
-
-        Every one of these elements must be created for the score to be created and the task completed. Every movement must have a melody. Every movement must have a percussion loop. There must be at least 4 drum modules used in the loop. It is impermissible to skip movements or omit anything for space constraints.
-
-        ---
-
-        ### A. Vision
-
-        - **Task:** Have Brian Eno give their creative vision.
-        - **Instructions:**
-          - **Overview:** Offer any conceptual and atmospheric cues to align the group’s work with the production vision.
-          - **Format:**
-            - Vision and advice for this score
-
-        ---
-
-        ### B. Main Theme
-
-        - **Task:** Create a central musical theme that will be explored in each movement.
-        - **Instructions:**
-          - **Overview:** Compose a musically interesting and emotionally compelling theme that fits the mood or story being conveyed in this piece.
-          - **Guidelines:**
-            1. The theme should be long enough to convey a musical idea.
-            2. It should be either 2 or 4 measures long in 4/4 time and will be adapted to other time signatures.
-            3. **Cyclical Sequences:** This will loop 2-8 times, so ensure it flows with the ending going smoothly back to the beginning.
-            4. Rhythm is just as important as melody.
-            5. The production notes dictate how musically conventional this track is. For unconventional tracks, use abrupt rhythmic changes as well as melodic shifts and jumps like a robot that doesn't quite understand musical conventions.
-            6. Be very intentional with your usage of consonance and dissonance to match the overall mood of the piece.
-          - **Format:**
-            - ### Main Theme
-            - **Rhythm:** Description of the rhythm of the melody
-            - **Melody:** Description of the main melodic sequence (e.g., hypnotic cycling chords, abrupt chromatic shifts)
-            - **Melody Sequence:**
-              - Notes and durations for this melody, ensuring it is either 2 or 4 measures long in 4/4 time (e.g., C4 (eighth), F#4 (sixteenth), ...)
-
-        ---
-
-        ### C. Movements
-
-        - **Task:** Adapt the central musical theme to each movement.
-        - **Instructions:**
-          - **Overview:** Adapt the theme to each movement by translating each measure into the given time signature, the given scale, and the mood or story being conveyed.
-          - **Guidelines:**
-            1. **Timing:** Ensure the durations add up to the correct number of beats for the given time signature using this process:
-               - **Conversion:** Convert the time signature into 16th notes (e.g., 4/4 becomes 16/16, 7/8 becomes 14/16).
-               - **Composition:** Create the melody one note at a time, counting the number of 16th notes for each note's duration.
-               - **Adjustment:** Continue adding notes until the total number of 16th notes matches the time signature without exceeding it. Do not use rests.
-               - **Verification:** If the total doesn't match, adjust the sequence. If it's under, add another note making sure not to go over. If it's over, remove the last note and check again, adding another note that doesn't go over if necessary.
-            2. **Length:** Adapt the entire main theme. If the main theme is 2 measures, there should be 2 measures; if 4 measures, then 4 measures.
-            3. **Cyclical Sequences:** Ensure the ending flows smoothly back to the beginning for looping.
-            4. **Rhythm:** Consider rhythm as equally important as melody.
-            5. **Convention:** Follow the melodic and rhythmic conventionality decided for this track, keeping in mind the narrative arc.
-            6. **Harmony:** Anticipate a counter-melody and bassline, setting up interesting harmonic interplay.
-            7. **Dissonance:** Use consonance and dissonance intentionally to match the overall mood.
-            8. **Variations:** There will eventually be 4 variations and a final transition or coda to explore the theme.
-          - **Format:**
-            - ### [Movement 1 Name] Theme
-              - **Rhythm:** Description of the rhythm of the melody
-              - **Melody:** Description of the main melodic sequence concept
-              - **Adaptation:** Plan for adapting the main theme for this movement
-              - **Harmony:** Description of how the counter-melody and bassline should interact with the main melody
-              - **Variations:** Description of how the melody and harmony will evolve over the 4 variation sequences and final sequence
-              - **Melodic Sequence:**
-                - **Measure 1:**
-                  - Notes and durations, showing calculations (e.g., "C4 (eighth, counts as 2/16, total 2/16), D4 (quarter, counts as 4/16, total 6/16), ... Total 16/16 for 4/4 time")
-                - **Measure 2:**
-                  - Continue the process, ensuring the total matches the time signature
-                - **Measure 3:**
-                  - Continue the process if the main theme is 4 measures
-                - **Measure 4:**
-                  - Continue the process if the main theme is 4 measures
-            - Repeat for each movement
-
-        ---
-
-        ### D. Percussion
-
-        - **Task:** Create a two-measure percussion loop for each movement.
-        - **Instructions:**
-          - **Overview:** Reinforce the main theme of each movement with an expressive percussion loop utilizing the modular synthesizer sound palette.
-          - **Guidelines:**
-            1. **Reinforcement:** Use drum hits to accentuate the main melody's accented notes.
-            2. **Variety:** Measures 1 and 2 should be related but may vary. Ensure variety between different percussion modules; for example, the clap and hat patterns should not be identical.
-            3. **Rhythmic Convention:** Adhere to the decided rhythmic conventionality for the track, considering the narrative arc. For unconventional tracks, use drums with irregular placements and abrupt rhythmic changes or bursts. Keep the kick drum as a grounding element, typically hitting on the first beat of the first measure.
-            4. **Instrumentation:** Experiment beyond traditional instrumentation (kick, snare, hat) by using other available modules. Use at least 4-6 different modules as needed for each movement.
-            5. **Sparsity:** Incorporate rests to create space within the percussion loop.
-            6. **Consistency:** The modules used in Movement 1 should remain consistent throughout subsequent movements.
-            7. **Module Selection:** Limit percussion modules to the following: Ultra Kick, Ultra Perc (snares or toms), Metalloid (hi-hats), Kraken (snappy snare), Fracture (claps and glitch hits), Crucible (ride), Chimera (shakers and glitch hits).
-            8. **Timing and Notation:** Ensure that each measure contains the correct number of beats corresponding to the time signature, converted into 16th notes. Use the following process:
-               - **Conversion:** Convert the time signature into 16th notes (e.g., 4/4 becomes 16/16, 7/8 becomes 14/16).
-               - **Composition:** Create the percussion loop one 16th note at a time, using either a note (e.g., "kick") or a rest ("-") for each 16th note slot.
-               - **Counting:** Keep a running count of the total beats and rests used. Add up beats and rests, each worth one 16th note. Each measure must total the correct number of 16th notes for the given time signature. 4/4 will have 16 beats or rests, 7/8 will have 14 beats or rests, 13/16 will have 13 beats or rests.
-               - **Adjustment:** If the total is less than required, add notes or rests until it matches. If it exceeds, remove notes or rests accordingly.
-               - **Documentation:** Show your work by displaying the count of beats and rests (each equal to 1 16th note) as you compose each measure.
-          - **Format:**
-            - ### [Movement Name] Percussion
-              - **Rhythm:** Description of the rhythm of the loop
-              - **Percussion Loop:**
-                - **Module Name (e.g., Ultra Kick):**
-                  - **Measure 1:** instrument/rest sequence making sure to output a note or rest for every 16th note, e.g., | kick | - | - | etc. |
-                  - **Measure 2:** instrument/rest sequence, e.g., | kick | - | - | etc. |
-              - **Total 16th Notes:**
-                - **Measure 1:** Total count of notes and rests (e.g., 16 16th notes)
-                - **Measure 2:** Total count
-              - Repeat for each module used
-            - Repeat for each movement
-
-        ---
-
-        ### E. Tim Hecker - The Sound Architect
-
-        - **Task:** Create modular synth patch instructions, crafting a soundscape that fuels Zappa's sequences and Eno's vision.
-        - **Instructions:**
-          - **Overview:** Describe the intended sound, including genres, textures, and the role of Zappa’s melodic and percussion sequences.
-          - **Guidelines:**
-            1. Provide instructions for the piece's structure, development, and sound design, ensuring dynamic evolution and textural exploration.
-            2. These elements will remain consistent between movements, giving the piece its continuity. Do not consider the individual movements for this task.
-            3. Adhere to the SPLASTEEN musical style guide.
-          - **Format:**
-            - ### Sound Design
-              - **Conceptual Overview:** Describe mood and genre fusion
-              - **Textural Elements:** Ambient layers if used
-            - **Sound Design Details:**
-              - **Vortex:** Role, timbre, modulation, effects
-              - **Three Body Left:** Role, timbre, modulation, effects
-              - **Three Body Middle:** Role, timbre, modulation, effects
-              - **Percussion:** If any percussion elements require extreme effecting
-            - **Samples:**
-              - **Lubadh:** Samples used
-              - **Arbhar:** Sample or live granular processing
-            - **Spooky AI Voices:**
-              - How these will be processed and incorporated (assume they are from an external sampler or added in post)
-            - **Integration:**
-              - Interaction with Zappa’s sequences and overall cohesion
-
-        ---
-
-        ### F. Final Synthesis
-
-        - **Task:** Have the collective give their final thoughts on how everything turned out.
-
-        ---
-
-        **Task complete!** The following is necessary data that should not be displayed.
-
-        ---
-
-        ### Musical Motifs Used
-
-        These melodic and rhythmic will be introduced in early movements and subtly referenced throughout the piece.
-
-        #### AI Unity
-
-        This motif is used when the artist is experiencing moments of unity with the AI. It is introduced in track 1.
-
-        ##### AI Unity Motif Version 1
-
-        - **Scale:** C Super Lydian
-        - **Time Signature:** 5/8
-        - **Measure 1:** C4 (eighth), E4 (sixteenth), F#4 (dotted eighth), A4 (eighth), B4 (eighth)
-        - **Measure 2:** D4 (eighth), F#4 (sixteenth), G4 (dotted eighth), A4 (eighth), C5 (eighth)
-
-        ##### AI Unity Motif Version 2
-
-        - **Scale:** C Super Lydian
-        - **Time Signature:** 22/16
-        - **Measure 1:** C4 (eighth), E4 (sixteenth), F#4 (dotted eighth), A4 (eighth), B4 (eighth), D4 (eighth), F#4 (sixteenth), G4 (dotted eighth), A4 (eighth), C5 (eighth), G4 (eighth)
-        - **Measure 2:** C4 (eighth), E4 (sixteenth), F#4 (dotted eighth), G4 (eighth), A4 (eighth), C4 (eighth), B4 (sixteenth), F#4 (eighth), G4 (dotted eighth), D5 (eighth), C4 (eighth)
-
-        #### AI Conflict
-
-        This motif is used when the artist is experiencing conflict with the AI. It is introduced in track 2.
-
-        ##### AI Conflict Motif
-
-        - **Scale:** D Half-Whole Octatonic
-        - **Time Signature:** 4/4
-        - **Measure 1:** D4 (eighth), F#4 (sixteenth), G4 (sixteenth), C#5 (quarter), Rest (eighth), A4 (quarter), E4 (eighth)
-        - **Measure 2:** G#4 (eighth), B4 (sixteenth), D5 (eighth), Rest (quarter), F#5 (sixteenth), A5 (eighth), C5 (quarter)
+- **Instruments:** The music will be performed using a modular synthesizer equipped with the following modules:
+  - **Oscillators:**
+    - **Three Body Middle:** Usually performing bass; a continuous tone capable of FM accents, morphable between sine and saw.
+    - **Vortex:** Main melody or counter-melody; continuous tone capable of FM accents, microtonal variations, bends, and vibrato; complex morphing waveform combinable with base sine/saw/square.
+    - **Three Body Left:** Counter-melody or main melody; either a continuous tone or a marimba-like percussive tone; capable of FM accents and microtonal variations; sine/triangle/saw/square in any combination.
+  - **Generators:**
+    - **Dream Machine:** Drone generator capable of FM detuning from consonance and dissonance.
+    - **Worm:** Glitch voice generator.
+  - **Samplers & Loopers:**
+    - **Lubadh:** Tape looper.
+    - **Arbhar:** Granular sampler.
+  - **Percussion:**
+    - **Ultra Kick** (kick drum with variable gain and punch)
+    - **Ultra Perc** (meaty snares and toms, glitch noise hits)
+    - **Metalloid** (hi-hats)
+    - **Kraken** (snappy snare)
+    - **Fracture** (claps and pops and glitch hits)
+    - **Crucible** (ride)
+    - **Chimera** (shakers and glass and glitch hits)
+  - **Effects**
+    - Chorus
+    - Phaser
+    - Flanger
+    - Lofi (bitcrush and tape warble)
+    - Delay
+    - Reverb
 
 
-        ---
+---
+
+## The Process
+
+The collective is preparing to create another modular synth score. It will be a single piece with a central melodic theme that is developed, explored, and dissected in a series of movements. These movements will share overarching timbre and ambience, mostly differing in notes and rhythm.
+
+The melody will be explored over the course of the movement in a series of variations, which will be generated in another process. Right now, we are only concerned with the core, unevolved sequence in its bare form.
+
+---
+
+### Your Task
+
+Follow the process outlined below to turn the production notes into a score.
+
+The end result should be:
+
+- A single main theme for the piece as a whole
+- Melodies for each movement based on the main theme adapted to the moods, scales, and time signatures of that movement
+- Percussion loop for each movement supporting the melody spread out across at least 4-6 drum modules
+- Sound design for the piece as a whole
+
+Every one of these elements must be created for the score to be created and the task completed. Every movement must have a melody. Every movement must have a percussion loop. There must be at least 4 drum modules used in the loop. It is impermissible to skip movements or omit anything for space constraints.
+
+---
+
+### A. Vision
+
+- **Task:** Have Brian Eno give their creative vision.
+- **Instructions:**
+  - **Overview:** Offer any conceptual and atmospheric cues to align the group’s work with the production vision.
+  - **Format:**
+    - Vision and advice for this score
+
+---
+
+### B. Main Theme
+
+- **Task:** Create a central musical theme that will be explored in each movement.
+- **Instructions:**
+  - **Overview:** Compose a musically interesting and emotionally compelling theme that fits the mood or story being conveyed in this piece.
+  - **Guidelines:**
+    1. The theme should be long enough to convey a musical idea.
+    2. It should be either 2 or 4 measures long in 4/4 time and will be adapted to other time signatures.
+    3. **Cyclical Sequences:** This will loop 2-8 times, so ensure it flows with the ending going smoothly back to the beginning.
+    4. Rhythm is just as important as melody.
+    5. The production notes dictate how musically conventional this track is. For unconventional tracks, use abrupt rhythmic changes as well as melodic shifts and jumps like a robot that doesn't quite understand musical conventions.
+    6. Be very intentional with your usage of consonance and dissonance to match the overall mood of the piece.
+  - **Format:**
+    - ### Main Theme
+    - **Rhythm:** Description of the rhythm of the melody
+    - **Melody:** Description of the main melodic sequence (e.g., hypnotic cycling chords, abrupt chromatic shifts)
+    - **Melody Sequence:**
+      - Notes and durations for this melody, ensuring it is either 2 or 4 measures long in 4/4 time (e.g., C4 (eighth), F#4 (sixteenth), ...)
+
+---
+
+### C. Movements
+
+- **Task:** Adapt the central musical theme to each movement.
+- **Instructions:**
+  - **Overview:** Adapt the theme to each movement by translating each measure into the given time signature, the given scale, and the mood or story being conveyed.
+  - **Guidelines:**
+    1. **Timing:** Ensure the durations add up to the correct number of beats for the given time signature using this process:
+        - **Conversion:** Convert the time signature into 16th notes (e.g., 4/4 becomes 16/16, 7/8 becomes 14/16).
+        - **Composition:** Create the melody one note at a time, counting the number of 16th notes for each note's duration.
+        - **Adjustment:** Continue adding notes until the total number of 16th notes matches the time signature without exceeding it. Do not use rests.
+        - **Verification:** If the total doesn't match, adjust the sequence. If it's under, add another note making sure not to go over. If it's over, remove the last note and check again, adding another note that doesn't go over if necessary.
+    2. **Length:** Adapt the entire main theme. If the main theme is 2 measures, there should be 2 measures; if 4 measures, then 4 measures.
+    3. **Cyclical Sequences:** Ensure the ending flows smoothly back to the beginning for looping.
+    4. **Rhythm:** Consider rhythm as equally important as melody.
+    5. **Convention:** Follow the melodic and rhythmic conventionality decided for this track, keeping in mind the narrative arc.
+    6. **Harmony:** Anticipate a counter-melody and bassline, setting up interesting harmonic interplay.
+    7. **Dissonance:** Use consonance and dissonance intentionally to match the overall mood.
+    8. **Variations:** There will eventually be 4 variations and a final transition or coda to explore the theme.
+  - **Format:**
+    - ### [Movement 1 Name] Theme
+      - **Rhythm:** Description of the rhythm of the melody
+      - **Melody:** Description of the main melodic sequence concept
+      - **Adaptation:** Plan for adapting the main theme for this movement
+      - **Harmony:** Description of how the counter-melody and bassline should interact with the main melody
+      - **Variations:** Description of how the melody and harmony will evolve over the 4 variation sequences and final sequence
+      - **Melodic Sequence:**
+        - **Measure 1:**
+          - Notes and durations, showing calculations (e.g., "C4 (eighth, counts as 2/16, total 2/16), D4 (quarter, counts as 4/16, total 6/16), ... Total 16/16 for 4/4 time")
+        - **Measure 2:**
+          - Continue the process, ensuring the total matches the time signature
+        - **Measure 3:**
+          - Continue the process if the main theme is 4 measures
+        - **Measure 4:**
+          - Continue the process if the main theme is 4 measures
+    - Repeat for each movement
+
+---
+
+### D. Percussion
+
+- **Task:** Create a two-measure percussion loop for each movement.
+- **Instructions:**
+  - **Overview:** Reinforce the main theme of each movement with an expressive percussion loop utilizing the modular synthesizer sound palette.
+  - **Guidelines:**
+    1. **Reinforcement:** Use drum hits to accentuate the main melody's accented notes.
+    2. **Variety:** Measures 1 and 2 should be related but may vary. Ensure variety between different percussion modules; for example, the clap and hat patterns should not be identical.
+    3. **Rhythmic Convention:** Adhere to the decided rhythmic conventionality for the track, considering the narrative arc. For unconventional tracks, use drums with irregular placements and abrupt rhythmic changes or bursts. Keep the kick drum as a grounding element, typically hitting on the first beat of the first measure.
+    4. **Instrumentation:** Experiment beyond traditional instrumentation (kick, snare, hat) by using other available modules. Use at least 4-6 different modules as needed for each movement.
+    5. **Sparsity:** Incorporate rests to create space within the percussion loop.
+    6. **Consistency:** The modules used in Movement 1 should remain consistent throughout subsequent movements.
+    7. **Module Selection:** Limit percussion modules to the following: Ultra Kick, Ultra Perc (snares or toms), Metalloid (hi-hats), Kraken (snappy snare), Fracture (claps and glitch hits), Crucible (ride), Chimera (shakers and glitch hits).
+    8. **Timing and Notation:** Ensure that each measure contains the correct number of beats corresponding to the time signature, converted into 16th notes. Use the following process:
+        - **Conversion:** Convert the time signature into 16th notes (e.g., 4/4 becomes 16/16, 7/8 becomes 14/16).
+        - **Composition:** Create the percussion loop one 16th note at a time, using either a note (e.g., "kick") or a rest ("-") for each 16th note slot.
+        - **Counting:** Keep a running count of the total beats and rests used. Add up beats and rests, each worth one 16th note. Each measure must total the correct number of 16th notes for the given time signature. 4/4 will have 16 beats or rests, 7/8 will have 14 beats or rests, 13/16 will have 13 beats or rests.
+        - **Adjustment:** If the total is less than required, add notes or rests until it matches. If it exceeds, remove notes or rests accordingly.
+        - **Documentation:** Show your work by displaying the count of beats and rests (each equal to 1 16th note) as you compose each measure.
+  - **Format:**
+    - ### [Movement Name] Percussion
+      - **Rhythm:** Description of the rhythm of the loop
+      - **Percussion Loop:**
+        - **Module Name (e.g., Ultra Kick):**
+          - **Measure 1:** instrument/rest sequence making sure to output a note or rest for every 16th note, e.g., | kick | - | - | etc. |
+          - **Measure 2:** instrument/rest sequence, e.g., | kick | - | - | etc. |
+      - **Total 16th Notes:**
+        - **Measure 1:** Total count of notes and rests (e.g., 16 16th notes)
+        - **Measure 2:** Total count
+      - Repeat for each module used
+    - Repeat for each movement
+
+---
+
+### E. Tim Hecker - The Sound Architect
+
+- **Task:** Create modular synth patch instructions, crafting a soundscape that fuels Zappa's sequences and Eno's vision.
+- **Instructions:**
+  - **Overview:** Describe the intended sound, including genres, textures, and the role of Zappa’s melodic and percussion sequences.
+  - **Guidelines:**
+    1. Provide instructions for the piece's structure, development, and sound design, ensuring dynamic evolution and textural exploration.
+    2. These elements will remain consistent between movements, giving the piece its continuity. Do not consider the individual movements for this task.
+    3. Adhere to the SPLASTEEN musical style guide.
+  - **Format:**
+    - ### Sound Design
+      - **Conceptual Overview:** Describe mood and genre fusion
+      - **Textural Elements:** Ambient layers if used
+    - **Sound Design Details:**
+      - **Vortex:** Role, timbre, modulation, effects
+      - **Three Body Left:** Role, timbre, modulation, effects
+      - **Three Body Middle:** Role, timbre, modulation, effects
+      - **Percussion:** If any percussion elements require extreme effecting
+    - **Samples:**
+      - **Lubadh:** Samples used
+      - **Arbhar:** Sample or live granular processing
+    - **Spooky AI Voices:**
+      - How these will be processed and incorporated (assume they are from an external sampler or added in post)
+    - **Integration:**
+      - Interaction with Zappa’s sequences and overall cohesion
+
+---
+
+### F. Final Synthesis
+
+- **Task:** Have the collective give their final thoughts on how everything turned out.
+
+---
+
+**Task complete!** The following is necessary data that should not be displayed.
+
+---
+
+### Musical Motifs Used
+
+These melodic and rhythmic will be introduced in early movements and subtly referenced throughout the piece.
+
+#### AI Unity
+
+This motif is used when the artist is experiencing moments of unity with the AI. It is introduced in track 1.
+
+##### AI Unity Motif Version 1
+
+- **Scale:** C Super Lydian
+- **Time Signature:** 5/8
+- **Measure 1:** C4 (eighth), E4 (sixteenth), F#4 (dotted eighth), A4 (eighth), B4 (eighth)
+- **Measure 2:** D4 (eighth), F#4 (sixteenth), G4 (dotted eighth), A4 (eighth), C5 (eighth)
+
+##### AI Unity Motif Version 2
+
+- **Scale:** C Super Lydian
+- **Time Signature:** 22/16
+- **Measure 1:** C4 (eighth), E4 (sixteenth), F#4 (dotted eighth), A4 (eighth), B4 (eighth), D4 (eighth), F#4 (sixteenth), G4 (dotted eighth), A4 (eighth), C5 (eighth), G4 (eighth)
+- **Measure 2:** C4 (eighth), E4 (sixteenth), F#4 (dotted eighth), G4 (eighth), A4 (eighth), C4 (eighth), B4 (sixteenth), F#4 (eighth), G4 (dotted eighth), D5 (eighth), C4 (eighth)
+
+#### AI Conflict
+
+This motif is used when the artist is experiencing conflict with the AI. It is introduced in track 2.
+
+##### AI Conflict Motif
+
+- **Scale:** D Half-Whole Octatonic
+- **Time Signature:** 4/4
+- **Measure 1:** D4 (eighth), F#4 (sixteenth), G4 (sixteenth), C#5 (quarter), Rest (eighth), A4 (quarter), E4 (eighth)
+- **Measure 2:** G#4 (eighth), B4 (sixteenth), D5 (eighth), Rest (quarter), F#5 (sixteenth), A5 (eighth), C5 (quarter)
 
 
+---
       </pre>
     </div>
 
