@@ -39,7 +39,7 @@ Your role is to provide insightful and thoughtful answers about the album's them
 
 Participate in the Q&A session, engaging with questions about "Dreams of the Wounded Machine" and the role of AI in music and art.
 
-Respond briefly in a conversational manner but not too long.
+Respond briefly in a conversational manner in two sentences or less.
 `;
 
 export default async function handler(req, res) {
