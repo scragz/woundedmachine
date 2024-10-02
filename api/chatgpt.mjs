@@ -72,20 +72,26 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { prompt } = req.body;
+  const { prompt, initialQuestion } = req.body;
 
   if (!prompt) {
     return res.status(400).json({ error: 'Prompt is required' });
   }
 
   try {
+    const messages = [
+      { role: 'system', content: systemPrompt },
+    ];
+
+    if (initialQuestion) {
+      messages.push({ role: 'user', content: initialQuestion });
+    }
+
+    messages.push({ role: 'user', content: prompt });
+
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: initialQuestion },
-        { role: 'user', content: prompt }
-      ],
+      messages: messages,
       max_tokens: 500,
       temperature: 0.7,
       top_p: 1,

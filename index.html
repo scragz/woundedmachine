@@ -1447,7 +1447,8 @@ This motif is used when the artist is experiencing conflict with the AI. It is i
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            prompt: userInput
+            prompt: userInput,
+            isInitialQuestion: !conversationStarted
           })
         });
 
