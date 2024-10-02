@@ -1397,11 +1397,8 @@ This motif is used when the artist is experiencing conflict with the AI. It is i
       quote.style.setProperty('--random-left', randomLeft);
     });
 
-    let conversationStarted = false;
-    let initialQuestion = '';
-
-    // Function to handle conversation (both initiation and subsequent messages)
-    async function handleConversation(userInput = '') {
+    // Function to handle conversation
+    async function handleConversation(userInput = '', isInitial = false) {
       // Show typing indicator
       document.getElementById('typing-indicator').style.display = 'flex';
 
@@ -1415,18 +1412,14 @@ This motif is used when the artist is experiencing conflict with the AI. It is i
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            prompt: userInput || 'initiate_conversation',
-            initialQuestion: !conversationStarted ? initialQuestion : undefined
+            prompt: userInput || '',
+            initiateConversation: isInitial
           })
         });
 
         const data = await response.json();
         if (data.reply) {
           appendMessage('Eno Bot', data.reply);
-          if (!conversationStarted) {
-            initialQuestion = data.reply;
-            conversationStarted = true;
-          }
         } else {
           appendMessage('Eno Bot', 'Sorry, I encountered an issue processing your request.');
         }
@@ -1482,7 +1475,7 @@ This motif is used when the artist is experiencing conflict with the AI. It is i
     // Load dream files and start conversation on page load
     window.onload = () => {
       loadDreamFiles();
-      handleConversation();
+      handleConversation('', true);
 
       // Add event listener for send button
       document.getElementById('send-button').addEventListener('click', () => {
