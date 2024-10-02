@@ -52,30 +52,34 @@ const initialQuestions =[
   "Does the rise of AI in art challenge the uniqueness of human creativity, and how can we call AI-generated pieces 'art' when they lack genuine emotional depth?"
 ];
 
-const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
-
-const initialQuestion = `
-${randomQuestion}
-
-**Instructions for the Response:**
-
-- Phrase your response as a single provocative soundbite:
-  - It should be able to be taken out of context without their initial question.
-  - It should end with your own open-ended question:
-    - Your follow-up question should encourage the user to challenge their notions or ask further questions.
-  - Keep it brief: two sentences or less.
-- Your response should make the user think deeply or feel compelled to reply.
-`;
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { prompt } = req.body;
+  const { prompt, initialMessage } = req.body;
 
-  if (!prompt) {
-    return res.status(400).json({ error: 'Prompt is required' });
+  if (!prompt && !initialMessage) {
+    return res.status(400).json({ error: 'Prompt or initialMessage is required' });
+  }
+
+  let userMessage;
+  if (initialMessage) {
+    const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
+    userMessage = `
+      ${randomQuestion}
+
+      **Instructions for the Response:**
+
+      - Phrase your response as a single provocative soundbite:
+        - It should be able to be taken out of context without their initial question.
+        - It should end with your own open-ended question:
+          - Your follow-up question should encourage the user to challenge their notions or ask further questions.
+        - Keep it brief: two sentences or less.
+      - Your response should make the user think deeply or feel compelled to reply.
+    `;
+  } else {
+    userMessage = prompt;
   }
 
   try {
@@ -83,8 +87,7 @@ export default async function handler(req, res) {
       model: 'gpt-3.5-turbo',
       messages: [
         { role: 'system', content: systemPrompt },
-        { role: 'user', content: initialQuestion },
-        { role: 'user', content: prompt }
+        { role: 'user', content: userMessage }
       ],
       max_tokens: 500,
       temperature: 0.7,
