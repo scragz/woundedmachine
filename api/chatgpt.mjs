@@ -52,7 +52,11 @@ const initialQuestions =[
   "Does the rise of AI in art challenge the uniqueness of human creativity, and how can we call AI-generated pieces 'art' when they lack genuine emotional depth?"
 ];
 
-const initialQuestionInstructions = `
+const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
+
+const initialQuestion = `
+${randomQuestion}
+
 **Instructions for the Response:**
 
 - Phrase your response as a single provocative soundbite:
@@ -68,24 +72,20 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  let { prompt, initiateConversation } = req.body;
+  const { prompt } = req.body;
+
+  if (!prompt) {
+    return res.status(400).json({ error: 'Prompt is required' });
+  }
 
   try {
-    if (initiateConversation) {
-      const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
-      prompt = randomQuestion + initialQuestionInstructions;
-    } else if (!prompt) {
-      return res.status(400).json({ error: 'Prompt is required' });
-    }
-
-    const messages = [
-      { role: 'system', content: systemPrompt },
-      { role: 'user', content: prompt }
-    ];
-
     const completion = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
-      messages: messages,
+      messages: [
+        { role: 'system', content: systemPrompt },
+        { role: 'user', content: initialQuestion },
+        { role: 'user', content: prompt }
+      ],
       max_tokens: 500,
       temperature: 0.7,
       top_p: 1,
