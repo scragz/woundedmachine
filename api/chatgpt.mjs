@@ -68,16 +68,16 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { prompt, initiateConversation } = req.body;
-
-  if (initiateConversation) {
-    const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
-    prompt = randomQuestion + initialQuestionInstructions;
-  } else if (!prompt) {
-    return res.status(400).json({ error: 'Prompt is required' });
-  }
+  let { prompt, initiateConversation } = req.body;
 
   try {
+    if (initiateConversation) {
+      const randomQuestion = initialQuestions[Math.floor(Math.random() * initialQuestions.length)];
+      prompt = randomQuestion + initialQuestionInstructions;
+    } else if (!prompt) {
+      return res.status(400).json({ error: 'Prompt is required' });
+    }
+
     const messages = [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: prompt }
