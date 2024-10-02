@@ -1398,63 +1398,35 @@ This motif is used when the artist is experiencing conflict with the AI. It is i
     });
 
     let conversationStarted = false;
+    let initialQuestion = '';
 
-    // Function to initiate conversation
-    async function initiateConversation() {
-      if (conversationStarted) return;
-      conversationStarted = true;
-
+    // Function to handle conversation (both initiation and subsequent messages)
+    async function handleConversation(userInput = '') {
       // Show typing indicator
       document.getElementById('typing-indicator').style.display = 'flex';
 
-      try {
-        const response = await fetch('/api/chatgpt.mjs', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            prompt: 'initiate_conversation'
-          })
-        });
-
-        const data = await response.json();
-        if (data.reply) {
-          appendMessage('Eno Bot', data.reply);
-        } else {
-          appendMessage('Eno Bot', 'Sorry, I encountered an issue processing your request.');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-        appendMessage('Eno Bot', 'Sorry, something went wrong.');
-      } finally {
-        // Hide typing indicator
-        document.getElementById('typing-indicator').style.display = 'none';
+      if (userInput) {
+        appendMessage('You', userInput);
+        document.getElementById('user-input').value = '';
       }
-    }
-
-    // Function to send message to AI
-    async function sendMessage() {
-      const userInput = document.getElementById('user-input').value.trim();
-      if (!userInput) return;
-
-      appendMessage('You', userInput);
-      document.getElementById('user-input').value = '';
-
-      // Show typing indicator
-      document.getElementById('typing-indicator').style.display = 'flex';
 
       try {
         const response = await fetch('/api/chatgpt.mjs', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            prompt: userInput,
-            isInitialQuestion: !conversationStarted
+            prompt: userInput || 'initiate_conversation',
+            initialQuestion: !conversationStarted ? initialQuestion : undefined
           })
         });
 
         const data = await response.json();
         if (data.reply) {
           appendMessage('Eno Bot', data.reply);
+          if (!conversationStarted) {
+            initialQuestion = data.reply;
+            conversationStarted = true;
+          }
         } else {
           appendMessage('Eno Bot', 'Sorry, I encountered an issue processing your request.');
         }
@@ -1510,16 +1482,20 @@ This motif is used when the artist is experiencing conflict with the AI. It is i
     // Load dream files and start conversation on page load
     window.onload = () => {
       loadDreamFiles();
-      initiateConversation();
+      handleConversation();
 
       // Add event listener for send button
-      document.getElementById('send-button').addEventListener('click', sendMessage);
+      document.getElementById('send-button').addEventListener('click', () => {
+        const userInput = document.getElementById('user-input').value.trim();
+        if (userInput) handleConversation(userInput);
+      });
 
       // Add event listener for Enter key in chat input
       document.getElementById('user-input').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
           event.preventDefault();
-          sendMessage();
+          const userInput = document.getElementById('user-input').value.trim();
+          if (userInput) handleConversation(userInput);
         }
       });
     };
